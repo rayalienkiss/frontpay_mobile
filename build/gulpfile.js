@@ -55,6 +55,7 @@ var filePaths = {
 	images: [staticPath+'/images/**/**', '!'+ staticPath +'/images/sprite/**/**'],
 	less: [staticPath+'/less/**/**.less', '!'+staticPath+'/less/**/_**.less'],
 	js: staticPath+'/js/**/**.js',
+    plguinStyle: staticPath+'/js/**/**.css',
 	html: [tplPath+'/**/*.html','!'+tplPath+'/_**/*.html','!'+tplPath+'/output/**/*.html','!'+tplPath+'/build/**/*.html'],
     watchHtml: [tplPath+'/**/*.html', '!'+tplPath+'/output/**/*.html','!'+tplPath+'/build/**/*.html']
 };
@@ -162,6 +163,13 @@ gulp.task('js', function(){
                 .pipe(connect.reload())
 })
 
+gulp.task('plugin', function(){
+    return gulp.src(filePaths.plguinStyle)
+                .pipe(minifyCSS({compatibility: 'ie7'}))
+                .pipe(gulp.dest(distPath+'/js'))
+                .pipe(connect.reload())
+});
+
 /* 编译模板 */
 gulp.task('template', function(){
     gulp.src(filePaths.html)
@@ -195,6 +203,6 @@ gulp.task('watch', function(){
 /*------ 默认启动任务 ------ */
 gulp.task('default', ['clean'], function(){
     //gulp.start(['sprite','iconfont', 'images', 'less', 'js', 'template', 'watch', 'server']);
-    gulp.start(['less', 'js', 'template', 'watch', 'server']);
+    gulp.start(['less', 'js', 'plugin', 'template', 'watch', 'server']);
 });
 

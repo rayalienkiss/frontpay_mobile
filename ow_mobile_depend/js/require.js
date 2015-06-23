@@ -40,6 +40,6 @@ require.config({
 	urlArgs: 'v=20150623',
 	paths: {
 		'jquery': 'jquery-2.1.1.min',
-		'zepto': 'zepto.min'
+		'zepto': 'zepto'
 	}
 });
