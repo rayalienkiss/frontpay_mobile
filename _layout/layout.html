@@ -1,0 +1,9 @@
+{% extends "_layout/base.html" %}
+
+{% block globalCss %}
+        <link rel="stylesheet" href="{{ config.static }}/css/index.css?v={{ config.version }}">
+{% endblock %}
+
+{% block globalJs %}
+        <script type="text/javascript" src="{{ config.static }}/js/require.js?v={{ config.version }}" data-main="{% block mainjs %}{% endblock %}"></script>
+{% endblock %}

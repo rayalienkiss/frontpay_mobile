@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta http-equiv="Cache-Control" content="no-siteapp"/>
+        <meta name="renderer" content="webkit">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <meta name="copyright" content="本页版权归www.frontpay.cn所有·All Rights Reserved">
+        <meta name="author" content="www.frontpay.cn"/>
+        <meta name="keyword" content="钱沿支付,E+账户,债权支付,债权转让,充值投资,交易担保,0交易手续费,投资平台信用支付解决方案，电商预付费支付解决方案，垂直电商平台支付解决方案，交易平台担保支付解决方案，企业自动划扣支付解决方案，线下商户会员预付费解决方案，集团供应链支付结算解决方案,钱途互联"/>
+        <meta name="description" content="钱沿支付,是由广东钱途互联商务服务有限公司顺应互联网的发展,以实现支付场景的丰富性,突破解决网银和第三方支付的支付局限性为出发点,创新打造的全新债权支付工具.致力于为广大用户提供安全快速的电子支付/网上支付/安全支付体验,及充值/转账/提现/付款/收款等服务应用."/>
+        <meta name="Robots"content="all"/>
+        
+        <title>{% block title %}{% endblock %}</title>
+
+        <!-- 网站标识 -->
+        <link rel="shortcut icon" href="{{ config.static }}/img/favicon.ico" />
+        <link rel="bookmark" type="image/x-icon"  href="{{ config.static }}/img/favicon.ico"/>
+
+        <!-- 页面样式 -->
+        {% block globalCss %}{% endblock %}
+        {% block css %}{% endblock %}
+    </head>
+
+    <body {% block bodyClass %}{% endblock %}>
+
+        {% block body %}{% endblock %}
+
+        {% block globalJs %}{% endblock %}
+        {% block js %}{% endblock %}
+    </body>
+</html>
