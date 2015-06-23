@@ -1,0 +1,36 @@
+{% extends "_layout/layout.html" %}
+
+{% block title %}关于钱沿 – 钱沿支付{% endblock %}
+
+{% block body %}
+
+    <main class="container feedback-container">
+    	<section class="content-box content-box-first">
+    		<h2 class="content-box-hd">留言反馈</h2>
+    		<form action="#" class="feedback-frm">
+                <div class="frm-item">
+                    <em>*</em>
+                    <input type="text" placeholder="请输入您的姓名：" class="frm-text">
+                </div>
+                <div class="frm-item">
+                    <em>*</em>
+                    <input type="text" placeholder="请输入您的手机号：" class="frm-text">
+                </div>
+                <div class="frm-item">
+                    <em>*</em>
+                    <input type="text" placeholder="请输入您的邮箱：" class="frm-text">
+                </div>
+                <div class="frm-item">
+                    <em>*</em>
+                    <textarea name="" placeholder="感谢您来到钱沿支付，您的意见或任何不满都将是我们努力的改进的方向和动力" class="frm-textarea"></textarea>
+                    <div class="frm-tips">还可以输入<b>200</b>字</div>
+                </div>
+                <div class="frm-item">
+                    <button type="button" class="frm-btn">提交</button>
+                </div>      
+            </form>
+    	</section>
+    </main>
+{% endblock %}
+
+{% block mainjs %}framwork{% endblock %}

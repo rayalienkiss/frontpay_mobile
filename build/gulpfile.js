@@ -192,7 +192,7 @@ gulp.task('server', ['template'], function(){
 /*--- watch 监听 ---*/
 gulp.task('watch', function(){
 	//gulp.watch(filePaths.iconfont, ['iconfont']);
-	//gulp.watch(filePaths.images, ['images']);
+	gulp.watch(filePaths.images, ['images']);
 	gulp.watch(filePaths.less, ['less']);
 	gulp.watch(filePaths.js, ['js']);
     gulp.watch(filePaths.watchHtml, ['template']);
@@ -203,6 +203,6 @@ gulp.task('watch', function(){
 /*------ 默认启动任务 ------ */
 gulp.task('default', ['clean'], function(){
     //gulp.start(['sprite','iconfont', 'images', 'less', 'js', 'template', 'watch', 'server']);
-    gulp.start(['less', 'js', 'plugin', 'template', 'watch', 'server']);
+    gulp.start(['less', 'js', 'plugin', 'images', 'template', 'watch', 'server']);
 });
 

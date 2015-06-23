@@ -7,7 +7,8 @@ define('framwork', ['zepto', 'layer/layer', 'fastclick'], function($, layer, Fas
 	FastClick.attach(document.body);
 
     $(document).ready(function(){
-        setTimeout(function(){
+    	$('#J_loading').hide();
+        /*setTimeout(function(){
             $('#J_loading').hide();
 
             layer.open({
@@ -20,7 +21,7 @@ define('framwork', ['zepto', 'layer/layer', 'fastclick'], function($, layer, Fas
 			        layer.open({content: '你选择了取消', time: 1});
 			    }
 			});
-        }, 1000);
+        }, 300);*/
     })
 })
 

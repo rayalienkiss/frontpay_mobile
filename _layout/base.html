@@ -6,6 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta http-equiv="Cache-Control" content="no-siteapp"/>
         <meta name="renderer" content="webkit">
+        <meta content="telephone=no" name="format-detection"/>
+        <meta content="address=no" name="format-detection"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
         <meta name="copyright" content="本页版权归www.frontpay.cn所有·All Rights Reserved">
         <meta name="author" content="www.frontpay.cn"/>
@@ -25,8 +27,11 @@
     </head>
 
     <body {% block bodyClass %}{% endblock %}>
-
+        
+        {% include "_layout/header.html" %}
         {% block body %}{% endblock %}
+        
+        {% include "_layout/footer.html" %}
 
         {% block globalJs %}{% endblock %}
         {% block js %}{% endblock %}
