@@ -22,7 +22,37 @@ define('framwork', ['zepto', 'layer/layer', 'fastclick'], function($, layer, Fas
 			    }
 			});
         }, 300);*/
+    });
+
+
+    var $banner = $('.page-banner');
+    var drag = false;
+    var startX = 0, startY = 0;
+
+    $banner.on('touchstart', function(e){
+    	drag = true;
+    	startX = e.targetTouches[0].pageX;
+    	startY = e.targetTouches[0].pageY;
+    }).on('touchend', function(e){
+    	drag = false;
+    	startX = e.changedTouches[0].pageX;
+    	startY = e.changedTouches[0].pageY;
+    }).on('touchmove', function(e){
+    	var y = e.changedTouches[0].pageY - startY;
+        var x = e.changedTouches[0].pageX - startX;
+
+        move($banner, x, y);
     })
+
+    $(document).on('touchmove', function(e) {
+        drag && e.preventDefault();
+    });
+
+    function move($ele, dir, dist) {
+        var translate =  'translateY';
+        $ele.css({'-webkit-transform':translate + '(' + dist + 'px)','transform':translate + '(' + dist + 'px)'});
+    }
+
 })
 
 require(['framwork']);

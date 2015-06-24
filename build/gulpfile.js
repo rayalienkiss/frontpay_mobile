@@ -35,6 +35,8 @@ var rename = require('gulp-rename');
 var del = require('del')
 
 var autoBrowser = require('./autoBrowser')
+var getIPAddress = require('./getIPAddress')
+//var Server = require('./server')
 
 
 //模板路径
@@ -179,14 +181,20 @@ gulp.task('template', function(){
 });
 
 /* 启动服务 */
-gulp.task('server', ['template'], function(){
+gulp.task('server', ['template'], function(next){
     var port = config.port || 8000;
+    var hostname =  getIPAddress() || 'localhost';
     connect.server({
+        host: hostname,
         root: outPath,
         port: port
+        ,livereload: true
     });
 
-    autoBrowser('http://localhost:'+ port );
+    autoBrowser('http://'+ hostname +':'+ port );
+
+    //Server(outPath, port);
+    return next();
 });
 
 /*--- watch 监听 ---*/
@@ -195,7 +203,9 @@ gulp.task('watch', function(){
 	gulp.watch(filePaths.images, ['images']);
 	gulp.watch(filePaths.less, ['less']);
 	gulp.watch(filePaths.js, ['js']);
-    gulp.watch(filePaths.watchHtml, ['template']);
+    gulp.watch(filePaths.watchHtml, function(){
+        connect.reload()
+    });
    // gulp.watch(filePaths.sprite, ['sprite']);
 	//gulp.watch(distPath+'/images/sprite/**/**', ['less']);
 });

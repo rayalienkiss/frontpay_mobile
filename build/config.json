@@ -1,5 +1,5 @@
 {
 	"version": "20150623",
-	"port": 9000,
+	"port": 8004,
 	"static": "ow_mobile_depend"
 }
