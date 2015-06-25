@@ -24,3 +24,50 @@ html,
 body {
     .font-hei();
 }
+
+header{
+	position: relative;
+	height: @header-h;
+	background: @primary-color;
+	color: @header-color;
+
+	.brand{
+		margin: 0 4rem;
+		font-size: 0;
+		height: @header-h;
+		background: url("@{img-url}/logo.png") no-repeat center center;
+		background-size: auto 72%;
+	}
+
+	.header-back{
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding-left: 1.5rem;
+		width: 4rem;
+		height: @header-h;
+		line-height: @header-h;
+		color:  @header-color;
+		text-decoration: none;
+
+		.border-box();
+
+		&:before{
+			position: absolute;
+			top: 1rem;
+			left: .5rem;
+			content: '';
+			width: 1rem;
+			height: 1rem;
+			border-width: 0 0 .2rem .2rem; 
+			border-style: solid;
+			border-color:  @header-color;
+			border-radius: .2rem 0 .2rem 0;
+			transform: rotate(45deg);
+		}
+	}
+
+	.navigator{
+		display: none;
+	}
+}

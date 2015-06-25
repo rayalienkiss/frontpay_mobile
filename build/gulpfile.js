@@ -201,7 +201,7 @@ gulp.task('server', ['template'], function(next){
 gulp.task('watch', function(){
 	//gulp.watch(filePaths.iconfont, ['iconfont']);
 	gulp.watch(filePaths.images, ['images']);
-	gulp.watch(filePaths.less, ['less']);
+	gulp.watch(filePaths.less[0], ['less']);
 	gulp.watch(filePaths.js, ['js']);
     gulp.watch(filePaths.watchHtml, function(){
         connect.reload()
