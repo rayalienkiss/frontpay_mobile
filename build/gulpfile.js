@@ -203,9 +203,7 @@ gulp.task('watch', function(){
 	gulp.watch(filePaths.images, ['images']);
 	gulp.watch(filePaths.less[0], ['less']);
 	gulp.watch(filePaths.js, ['js']);
-    gulp.watch(filePaths.watchHtml, function(){
-        connect.reload()
-    });
+    gulp.watch(filePaths.watchHtml, ['template']);
    // gulp.watch(filePaths.sprite, ['sprite']);
 	//gulp.watch(distPath+'/images/sprite/**/**', ['less']);
 });

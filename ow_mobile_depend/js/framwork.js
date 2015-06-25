@@ -2,12 +2,44 @@
  * amd 模块
  * define(id, export)
  */
-define('framwork', ['zepto', 'layer/layer', 'fastclick'], function($, layer, FastClick) {
+define('framwork', ['zepto', 'layer/layer', 'fastclick', 'fullpage/zepto.fullpage'], function($, layer, FastClick, fullPage) {
 	
 	FastClick.attach(document.body);
 
     $(document).ready(function(){
-    	$('#J_loading').hide();
+    	//$('#J_loading').hide();
+
+        // 菜单
+        var menuToggle = (function(){
+            var menu = $('.navigator'), btn = $('.header-menu');
+            return {
+                show: function(){
+                    menu.addClass('active');
+                    btn.addClass('active');
+                },
+                hide: function(){
+                    menu.removeClass('active');
+                    btn.removeClass('active');
+                }
+            }
+        })();
+        $('.header-menu').on('click', function(e){
+            var isActive = $('.navigator').hasClass('active');
+            menuToggle[isActive ? 'hide' : 'show']();
+            e.stopPropagation();
+        });
+        $(document).on('click', $.proxy(menuToggle.hide, menuToggle));
+
+        // 全屏轮播
+        
+        $('.screen-wrap').fullpage({
+           // drag: true,
+            start: 1,
+            dir:'h',
+            duration: 100,
+            page: '.page'
+        });
+
         /*setTimeout(function(){
             $('#J_loading').hide();
 

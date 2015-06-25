@@ -1,13 +1,41 @@
 {% extends "_layout/layout.html" %}
 
 {% block title %}首页 – 钱沿支付{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="ow_mobile_depend/js/fullpage/zepto.fullpage.css">
+{% endblock %}
+{% block bodyClass %}class="index-body"{% endblock %}
 
 {% block body %}
-    <h1>首页</h1>
-
-    <div class="loading" id="J_loading">
-    	<span>Loading...</span>
-    </div>
+	<div class="container">
+		<div class="screen active">
+			<div class="screen-wrap">
+				<section class="page page1">
+	    			<img src="ow_mobile_depend/images/index/slide-txt1.png" alt="创新支付 因需而变" class="page1-txt1">
+	    			<img src="ow_mobile_depend/images/index/slide-txt2.png" alt="" class="page1-txt2">
+	    		</section>
+	    		<section class="page page2">
+	    			<img src="ow_mobile_depend/images/index/p2.jpg" class="page2-bg">
+	    			<img src="ow_mobile_depend/images/index/page2-txt1.png" alt="创新支付 因需而变" class="page2-txt1">
+	    			<img src="ow_mobile_depend/images/index/page2-txt2.png" alt="" class="page2-txt2">
+	    			<img src="ow_mobile_depend/images/index/page2-txt3.png" alt="" class="page2-txt3">
+	    		</section>
+	    		<section class="page page3">
+	    			<img src="ow_mobile_depend/images/index/slide-txt1.png" alt="创新支付 因需而变" class="page1-txt1">
+	    			<img src="ow_mobile_depend/images/index/slide-txt2.png" alt="" class="page1-txt2">
+	    		</section>
+	    		<section class="page page4">
+	    			<img src="ow_mobile_depend/images/index/slide-txt1.png" alt="创新支付 因需而变" class="page1-txt1">
+	    			<img src="ow_mobile_depend/images/index/slide-txt2.png" alt="" class="page1-txt2">
+	    		</section>
+	    		<section class="page page5">
+	    			<img src="ow_mobile_depend/images/index/slide-txt1.png" alt="创新支付 因需而变" class="page1-txt1">
+	    			<img src="ow_mobile_depend/images/index/slide-txt2.png" alt="" class="page1-txt2">
+	    		</section>	
+			</div>
+		</div>
+		<span class="start"><b></b></span>
+	</div>	
 {% endblock %}
 
 {% block mainjs %}framwork{% endblock %}

@@ -6,22 +6,186 @@
 
 @charset "UTF-8";
 
-.loading{
-	position: fixed;
+.index-body{
+	.brand{
+		background-image: url("@{img-url}/index-logo.png");
+	}
+	
+	.header-back{
+		display: none;
+	}
+
+	footer{
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		z-index: 100;
+		width: 100%;
+
+		.translate(0, 100%);
+	}
+	.ft-hotline, .ft-copyright{
+		display: block;
+	}
+}
+
+// 轮播
+.screen{
+	position: absolute;
 	top: 0;
 	left: 0;
-	right: 0;
 	bottom: 0;
-	background: rgba(0,0,0,.5);
-
-	text-align: center;
-
-	span{
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		vertical-align: middle;
-		color: #fff;
+	right: 0;
+	background: #0d061c;
+	
+	.page{
+		position: relative;
 	}
+	// 第一屏
+	.page1-txt1{
+		position: absolute;
+		top: 10%;
+		left: 50%;
+		width: 64%;
+		height: auto;
+		.opacity(0);
+		.translate(-50%, 10%);
+		.transition(all, .3s, linear, 0);
+	}
+
+	.page1-txt2{
+		position: absolute;
+		top: 28%;
+		left: 50%;
+		width: 64%;
+		height: auto;
+		.opacity(0);
+		.translate(-50%, 10%);
+		.transition(all, .3s, linear, .2s);
+	}
+
+	// 第二屏
+	.page2{
+		background: #f5f5f6;
+
+		.page2-bg{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: auto;
+
+			.opacity(0);
+			.transition(all, .5s, ease-in, .2s);
+		}
+
+		.page2-txt1{
+			position: absolute;
+			top: 13%;
+			left: 14%;
+			width: 50%;
+			height: auto;
+
+			.opacity(0);
+			.translate(-10%, 0);
+			.transition(all, .3s, ease-in, .7s);
+		}
+
+		.page2-txt2{
+			position: absolute;
+			top: 21%;
+			left: 38%;
+			width: 50%;
+			height: auto;
+
+			.opacity(0);
+			.translate(10%, 0);
+			.transition(all, .3s, ease-in, 1s);
+		}
+
+		.page2-txt3{
+			position: absolute;
+			top: 30%;
+			left: 15%;
+			width: 70%;
+			height: auto;
+
+			.opacity(0);
+			.translate(0, 10%);
+			.transition(all, .3s, ease-in, 1.4s);
+		}
+	}
+	
+	&.active{
+		.page1{
+			background: url('@{img-url}/index/p1.jpg') no-repeat bottom center;
+			background-size: cover;
+		}
+
+		.cur{
+			.page1-txt1,.page1-txt2{
+				.translate(-50%, 0);
+				.opacity(1); 
+			}
+
+			.page2-bg,.page2-txt1,.page2-txt2, .page2-txt3{
+				.translate(0, 0);
+				.opacity(1);
+			}
+		}
+	}
+}
+
+/* 箭头 */
+@-webkit-keyframes start {
+    0%,30% {
+        opacity: 0.2;
+        -webkit-transform: translate(10px, 0);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate(0,0);
+    }
+    100% {
+        opacity: 0.2;
+        -webkit-transform: translate(-10px, 0);
+    }
+}
+@keyframes start {
+    0%,30% {
+        opacity: 0.2;
+        transform: translate(10px, 0);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(0,0);
+    }
+    100% {
+        opacity: 0.2;
+        transform: translate(-10px, 0);
+    }
+}
+.start{
+    position: fixed;
+    right: 10px;
+    margin-left: -17px;
+    top: 50%;
+    margin-top: -34px;
+    width: 34px;
+    height: 34px;
+    -webkit-animation: start 1.5s infinite ease-in-out;
+    animation: start 1.5s infinite ease-in-out;
+}
+.start b{
+    position: absolute;
+    left: 50%; 
+    top: 10px;
+    margin-left: -9px;
+    width: 15px;
+    height: 15px;
+    border-width: 0 4px 4px 0;
+    border-color: @white;
+    border-style: solid;
+    background-size: 100% 100%;
+    .rotate(-45deg);
 }
