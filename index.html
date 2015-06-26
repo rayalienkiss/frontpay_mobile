@@ -31,11 +31,17 @@
 	    		<section class="page page5">
 	    			<img src="ow_mobile_depend/images/index/slide-txt1.png" alt="创新支付 因需而变" class="page1-txt1">
 	    			<img src="ow_mobile_depend/images/index/slide-txt2.png" alt="" class="page1-txt2">
-	    		</section>	
+	    		</section>
 			</div>
 		</div>
 		<span class="start"><b></b></span>
-	</div>	
+	</div>
 {% endblock %}
 
 {% block mainjs %}framwork{% endblock %}
+
+{% block js %}
+	<script>
+		require(['app/index']);
+	</script>
+{% endblock %}

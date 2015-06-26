@@ -2,12 +2,21 @@
  * amd 模块
  * define(id, export)
  */
-define('framwork', ['zepto', 'layer/layer', 'fastclick', 'fullpage/zepto.fullpage'], function($, layer, FastClick, fullPage) {
+define('framwork', ['zepto',  'fastclick'], function($, FastClick) {
 	
 	FastClick.attach(document.body);
 
     $(document).ready(function(){
     	//$('#J_loading').hide();
+        var winH = $(window).height(),
+            docH = $(document.body).height(),
+            footerH = $('.footer').height();
+        if(winH > docH + footerH) {
+            $('.footer').addClass('footer-fixed')
+        }
+       
+        // banner动画
+        $('.page-banner').addClass('active');
 
         // 菜单
         var menuToggle = (function(){
@@ -30,16 +39,6 @@ define('framwork', ['zepto', 'layer/layer', 'fastclick', 'fullpage/zepto.fullpag
         });
         $(document).on('click', $.proxy(menuToggle.hide, menuToggle));
 
-        // 全屏轮播
-        
-        $('.screen-wrap').fullpage({
-           // drag: true,
-            start: 1,
-            dir:'h',
-            duration: 100,
-            page: '.page'
-        });
-
         /*setTimeout(function(){
             $('#J_loading').hide();
 
@@ -57,7 +56,7 @@ define('framwork', ['zepto', 'layer/layer', 'fastclick', 'fullpage/zepto.fullpag
     });
 
 
-    var $banner = $('.page-banner');
+    /*var $banner = $('.page-banner');
     var drag = false;
     var startX = 0, startY = 0;
 
@@ -83,7 +82,7 @@ define('framwork', ['zepto', 'layer/layer', 'fastclick', 'fullpage/zepto.fullpag
     function move($ele, dir, dist) {
         var translate =  'translateY';
         $ele.css({'-webkit-transform':translate + '(' + dist + 'px)','transform':translate + '(' + dist + 'px)'});
-    }
+    }*/
 
 })
 
