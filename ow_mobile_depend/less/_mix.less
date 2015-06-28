@@ -96,6 +96,24 @@
   .transform( translate(@x, @y) );
 }
 
+// origin
+.transform-orgin( @x, @y ) {
+  transform-origin: @x @y;
+  -webkit-transform-origin: @x @y;
+  -moz-transform-origin: @x @y;
+  -ms-transform-origin: @x @y;
+  -o-transform-origin: @x @y;
+}
+
+// delay
+.transition-delay( @x ) {
+  transition-delay: @x;
+  -webkit-transition-delay: @x;
+  -moz-transition-delay: @x;
+  -ms-transition-delay: @x;
+  -o-transition-delay: @x;
+}
+
 // Background clip
 .background-clip( @argument: padding-box ) {
   -webkit-background-clip: @argument;
@@ -379,5 +397,16 @@
             @{-}opacity: 0;
         }
     }
+}
+
+.display-box(@align: center){
+  display: box;
+  display: -webkit-box; 
+  display: -moz-box;
+
+  -webkit-box-pack:@align; 
+  -moz-box-pack:@align; 
+  -webkit-box-align:@align; 
+  -moz-box-align:@align; 
 }
 

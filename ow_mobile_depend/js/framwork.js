@@ -2,11 +2,27 @@
  * amd 模块
  * define(id, export)
  */
-define('framwork', ['zepto',  'fastclick'], function($, FastClick) {
+define('framwork', ['zepto',  'fastclick', 'gallery/affix'], function($, FastClick, Affix) {
+
+    $.fn.switchClass = function(){
+        $(this).on('click', function(){
+            var active = $(this).attr('data-toggle');
+            //var hasClass = $(this).hasClass(active);
+            //$(this)[hasClass ? 'addClass' : 'removeClass'](active);
+            $(this).toggleClass(active);
+        })
+    };
 	
 	FastClick.attach(document.body);
 
     $(document).ready(function(){
+
+        $('[data-spy="affix"]').affix();
+        $('[data-toggle]').switchClass();
+
+        // 页面加载完，可添加动画
+        $('html').addClass('domReady');
+
     	//$('#J_loading').hide();
         var winH = $(window).height(),
             docH = $(document.body).height(),
@@ -36,6 +52,8 @@ define('framwork', ['zepto',  'fastclick'], function($, FastClick) {
             var isActive = $('.navigator').hasClass('active');
             menuToggle[isActive ? 'hide' : 'show']();
             e.stopPropagation();
+            e.preventDefault();
+            return false;
         });
         $(document).on('click', $.proxy(menuToggle.hide, menuToggle));
 

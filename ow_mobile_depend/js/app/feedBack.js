@@ -13,9 +13,9 @@ define('app/feedBack', ['zepto', 'layer/layer'], function($, dialog) {
                 btn: ['确认', '取消'],
                 shadeClose: false,
                 yes: function(){
-                    layer.open({content: '你点了确认', time: 1});
+                    dialog.open({content: '你点了确认', time: 1});
                 }, no: function(){
-                    layer.open({content: '你选择了取消', time: 1});
+                    dialog.open({content: '你选择了取消', time: 1});
                 }
             });
         $('.j-submit').on('click', function(){
@@ -25,9 +25,9 @@ define('app/feedBack', ['zepto', 'layer/layer'], function($, dialog) {
                 btn: ['确认', '取消'],
                 shadeClose: false,
                 yes: function(){
-                    layer.open({content: '你点了确认', time: 1});
+                    dialog.open({content: '你点了确认', time: 1});
                 }, no: function(){
-                    layer.open({content: '你选择了取消', time: 1});
+                    dialog.open({content: '你选择了取消', time: 1});
                 }
             });
         })
