@@ -1,0 +1,76 @@
+{% extends "_layout/layout.html" %}
+
+{% block title %}企业自动划扣支付解决方案 – 钱沿支付{% endblock %}
+
+{% block bodyClass %}class="bg-gray banner-fixed solution-banner-fixed"{% endblock %}
+
+{% block body %}
+    <section class="container">
+        <div class="page-banner solution-banner solution-banner-5">
+            <div class="page-banner-bg" style="background-image:url('ow_mobile_depend/images/solution/banner5.jpg')">
+                <img class="banner-txt1" src="ow_mobile_depend/images/solution/banner5_txt1.png" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="container solution-header theme-dark-salmon">
+    	<img src="ow_mobile_depend/images/solution/logo-Deduct.png" alt="" class="solution-icon">
+    	<h1>企业自动划扣支付解决方案</h1>
+    	<small>适用于已与消费者达成某种有条件自动支付方案企业</small>
+    	<nav class="j-navigators">
+    		<a href="#description" class="active">概述</a>
+    		<a href="#scene">应用场景</a>
+    		<a href="#case">成功案例</a>
+    	</nav>
+    </section>
+    <main class="container main">
+        <section class="content-box content-box-white j-affix" id="description">
+            <h2 class="title">概述</h2>
+            <div class="content-box-m text-indent">
+                <p>企业与消费者已达成某种有条件自动支付方案，在触发条件达到时，企业有权对消费者的资金进行划扣。如水电煤的缴费划扣，如电信话费的划扣，如粤通卡ETC的划扣，如羊城通地铁收费的划扣….支付场景无处不在。</p>
+                <p>钱沿支付为这类场景提供支付接口或支付插件，对消费者的资金进行增值，并支持根据企业的指令进行划扣转移。</p>
+            </div>
+        </section>
+
+        <section class="content-box content-box-white j-affix" id="scene">
+            <h2 class="title">应用场景</h2>
+            <div class="content-box-m">
+                <p>针对已与消费者签约并达成自动划扣协议的企业，为其提供资金自动划扣服务，且账面资金可增值，免去消费者柜台缴费繁琐手续。</p>
+                <hr class="dashed-line">
+                <dl class="tb-col-2 fs-14">
+                    <dt>适用行业：</dt>
+                    <dd>交通运输/电子通讯/快速消费品/互联网行业等。</dd>
+                    <dt>适用对象：</dt>
+                    <dd>消费者、服务运营商、商家、公交卡/地铁卡市民，小区居民等。</dd>
+                </dl>
+                <h3 class="box-reset fw-normal purple fs-14">场景展示</h3>
+                <p><img src="ow_mobile_depend/images/solution/img05.jpg" class="responsive-img" alt=""></p>
+            </div>
+        </section>
+
+        <section class="content-box content-box-white j-affix" id="case">
+            <h2 class="title">成功案例</h2>
+            <ul class="img-list">
+                <li>
+                    <img src="ow_mobile_depend/images/partners/sdhs.jpg" alt="">
+                </li>
+                <li>
+                    <img src="ow_mobile_depend/images/partners/yangchengtong.jpg" alt="">
+                </li>
+                <li>
+                    <img src="ow_mobile_depend/images/partners/chengchengkuandai.jpg" alt="">
+                </li>
+                <li>
+                    <img src="ow_mobile_depend/images/partners/wangkewuye.jpg" alt="">
+                </li>                
+            </ul>
+        </section>
+    </main>
+{% endblock %}
+
+{% block mainjs %}framwork{% endblock %}
+
+{% block js %}
+<script>
+	require(["app/solution"]);
+</script>
+{% endblock %}

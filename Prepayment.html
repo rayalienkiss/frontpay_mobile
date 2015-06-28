@@ -1,0 +1,82 @@
+{% extends "_layout/layout.html" %}
+
+{% block title %}电商预付费支付解决方案 – 钱沿支付{% endblock %}
+
+{% block bodyClass %}class="bg-gray banner-fixed solution-banner-fixed"{% endblock %}
+
+{% block body %}
+    <section class="container">
+        <div class="page-banner solution-banner solution-banner-2">
+            <div class="page-banner-bg" style="background-image:url('ow_mobile_depend/images/solution/banner2.jpg')">
+                <img class="banner-txt1" src="ow_mobile_depend/images/solution/banner2_txt1.png" alt="投资获信用信用当钱花">
+            </div>
+        </div>
+    </section>
+    <section class="container solution-header theme-light-blue">
+    	<img src="ow_mobile_depend/images/solution/logo-Prepayment.png" alt="" class="solution-icon">
+    	<h1>电商预付费支付解决方案</h1>
+    	<small>适用于具备重复消费属性的电商平台</small>
+    	<nav class="j-navigators">
+    		<a href="#description" class="active">概述</a>
+    		<a href="#scene">应用场景</a>
+    		<a href="#case">成功案例</a>
+    	</nav>
+    </section>
+    <main class="container main">
+        <section class="content-box content-box-white j-affix" id="description">
+            <h2 class="title">概述</h2>
+            <div class="content-box-m text-indent">
+                <p>售卖快速消耗品的电商，有圈存客户的愿望，希望客户能预存资金在平台，并能实时将预存资金转为消费，存在吸引客户预存并达到有效转化的需求。</p>
+                <p>钱沿支付可为此类电商平台提供支付插件，让其拥有自己品牌的“余额宝”，来实现增值功能。</p>
+            </div>
+        </section>
+
+        <section class="content-box content-box-white j-affix" id="scene">
+            <h2 class="title">应用场景</h2>
+            <div class="content-box-m">
+                <p>针对预付费类服务电商，通过预付充值形式，达到留存、转换客户及促进消费的需求。消费者通过充值虚拟钱包，在电商网站进行快速消费。</p>
+                <hr class="dashed-line">
+                <dl class="tb-col-2 fs-14">
+                    <dt>适用行业：</dt>
+                    <dd>交通运输/电子通讯/快速消费品/互联网行业等。</dd>
+                    <dt>适用对象：</dt>
+                    <dd>消费者、服务运营商、商家、公交卡/地铁卡市民，小区居民等。</dd>
+                </dl>
+                <h3 class="box-reset fw-normal purple fs-14">场景展示</h3>
+                <p><img src="ow_mobile_depend/images/solution/img02.jpg" class="responsive-img" alt=""></p>
+            </div>
+        </section>
+
+        <section class="content-box content-box-white j-affix" id="case">
+            <h2 class="title">成功案例</h2>
+            <ul class="img-list">
+                <li>
+                    <img src="ow_mobile_depend/images/partners/img_12.jpg" alt="">
+                </li>
+                <li>
+                    <img src="ow_mobile_depend/images/partners/1905.jpg" alt="">
+                </li>
+                <li>
+                    <img src="ow_mobile_depend/images/partners/img_14.jpg" alt="">
+                </li>
+                <li>
+                    <img src="ow_mobile_depend/images/partners/img_13.jpg" alt="">
+                </li>
+                <li>
+                    <img src="ow_mobile_depend/images/partners/img_18.jpg" alt="">
+                </li>
+                <li>
+                    <img src="ow_mobile_depend/images/partners/img_19.jpg" alt="">
+                </li>
+            </ul>
+        </section>
+    </main>
+{% endblock %}
+
+{% block mainjs %}framwork{% endblock %}
+
+{% block js %}
+<script>
+	require(["app/solution"]);
+</script>
+{% endblock %}

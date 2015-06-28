@@ -1,0 +1,67 @@
+{% extends "_layout/layout.html" %}
+
+{% block title %}交易平台担保支付解决方案 – 钱沿支付{% endblock %}
+
+{% block bodyClass %}class="bg-gray banner-fixed solution-banner-fixed"{% endblock %}
+
+{% block body %}
+    <section class="container">
+        <div class="page-banner solution-banner solution-banner-4">
+            <div class="page-banner-bg" style="background-image:url('ow_mobile_depend/images/solution/banner4.jpg')">
+                <img class="banner-txt1" src="ow_mobile_depend/images/solution/banner4_txt1.png" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="container solution-header theme-light-purple">
+    	<img src="ow_mobile_depend/images/solution/logo-Trading.png" alt="" class="solution-icon">
+    	<h1>交易平台担保支付解决方案</h1>
+    	<small>适用于电子商务类平台</small>
+    	<nav class="j-navigators">
+    		<a href="#description" class="active">概述</a>
+    		<a href="#scene">应用场景</a>
+    		<a href="#case">成功案例</a>
+    	</nav>
+    </section>
+    <main class="container main">
+        <section class="content-box content-box-white j-affix" id="description">
+            <h2 class="title">概述</h2>
+            <div class="content-box-m text-indent">
+                <p>此类平台对交易安全问题要求较高，有效的解决电子商务交易中的信用问题，极大促进了电子商务成功率。</p>
+                <p>钱沿支付可为此类应用场景提供担保支付交易平台，保障资金安全，保障消费者的权益。</p>
+            </div>
+        </section>
+
+        <section class="content-box content-box-white j-affix" id="scene">
+            <h2 class="title">应用场景</h2>
+            <div class="content-box-m">
+                <p>针对电子商务平台，为其交易双方提供资金安全担保服务，保障其交易资金安全，同时保障消费者合法权益。</p>
+                <hr class="dashed-line">
+                <dl class="tb-col-2 fs-14">
+                    <dt>适用行业：</dt>
+                    <dd>制造业/消费品/物流等行业/投资/债券/信托/典当等金融行业。</dd>
+                    <dt>适用对象：</dt>
+                    <dd>厂家、供应商、经销商、分销商、消费者、商家，投资者、拍卖者等。</dd>
+                </dl>
+                <h3 class="box-reset fw-normal purple fs-14">场景展示</h3>
+                <p><img src="ow_mobile_depend/images/solution/img04.jpg" class="responsive-img" alt=""></p>
+            </div>
+        </section>
+
+        <section class="content-box content-box-white j-affix" id="case">
+            <h2 class="title">成功案例</h2>
+            <ul class="img-list">
+                <!-- <li>
+                    <img src="ow_mobile_depend/images/partners/img_12.jpg" alt="">
+                </li> -->
+            </ul>
+        </section>
+    </main>
+{% endblock %}
+
+{% block mainjs %}framwork{% endblock %}
+
+{% block js %}
+<script>
+	require(["app/solution"]);
+</script>
+{% endblock %}

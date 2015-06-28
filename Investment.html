@@ -1,0 +1,74 @@
+{% extends "_layout/layout.html" %}
+
+{% block title %}投资平台信用支付解决方案 – 钱沿支付{% endblock %}
+
+{% block bodyClass %}class="bg-gray banner-fixed solution-banner-fixed"{% endblock %}
+
+{% block body %}
+    <section class="container">
+        <div class="page-banner solution-banner solution-banner-1">
+            <div class="page-banner-bg" style="background-image:url('ow_mobile_depend/images/solution/banner1.jpg')">
+                <img class="banner-txt1" src="ow_mobile_depend/images/solution/banner1_txt1.png" alt="投资获信用信用当钱花">
+            </div>
+        </div>
+    </section>
+    <section class="container solution-header theme-green">
+    	<img src="ow_mobile_depend/images/solution/logo-Investment.png" alt="" class="solution-icon">
+    	<h1>投资平台信用支付解决方案</h1>
+    	<small>适用于安全的投资平台</small>
+    	<nav class="j-navigators">
+    		<a href="#description" class="active">概述</a>
+    		<a href="#scene">应用场景</a>
+    		<a href="#case">成功案例</a>
+    	</nav>
+    </section>
+    <main class="container main">
+        <section class="content-box content-box-white j-affix" id="description">
+            <h2 class="title">概述</h2>
+            <div class="content-box-m">
+                <p>适用于安全的投资平台，投资者在投资后已经拥有了债权。</p>
+                <p>钱沿支付为这些平台提供信用惠商城，信用惠商城是支持“钱沿支付”的各类电商的导航入口，也是这些电商的特色优惠商品陈列。</p>
+                <p>投资者通过信用惠商城，进入到各类电商消费，使用“钱沿支付”消费，可实现债权转移支付，从而提前实现流动性。 </p>
+            </div>
+        </section>
+
+        <section class="content-box content-box-white j-affix" id="scene">
+            <h2 class="title">应用场景</h2>
+            <div class="content-box-m">
+                <p>针对拥有丰富资金优势的投融资平台,为投资人提供丰富的消费场景，投资享信用，信用当钱花。投资者在投融资平台上进行理财购买后，可以通过债权转让获得信用在商城进行预消费。</p>
+                <hr class="dashed-line">
+                <dl class="tb-col-2 fs-14">
+                    <dt>适用行业/平台：</dt>
+                    <dd>金融行业，投融资平台</dd>
+                    <dt>适用对象：</dt>
+                    <dd>投资者，理财者，电商商家</dd>
+                </dl>
+                <h3 class="box-reset fw-normal purple fs-14">场景展示</h3>
+                <p><img src="ow_mobile_depend/images/solution/img01.jpg" class="responsive-img" alt=""></p>
+            </div>
+        </section>
+
+        <section class="content-box content-box-white j-affix" id="case">
+            <h2 class="title">成功案例</h2>
+            <ul class="img-list">
+                <li>
+                    <img src="ow_mobile_depend/images/partners/xiaoejia.jpg" alt="">
+                </li>
+                <li>
+                    <img src="ow_mobile_depend/images/partners/hrbank.jpg" alt="">
+                </li>
+                <li>
+                    <img src="ow_mobile_depend/images/partners/nbbank.jpg" alt="">
+                </li>
+            </ul>
+        </section>
+    </main>
+{% endblock %}
+
+{% block mainjs %}framwork{% endblock %}
+
+{% block js %}
+<script>
+	require(["app/solution"]);
+</script>
+{% endblock %}

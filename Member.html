@@ -1,0 +1,66 @@
+{% extends "_layout/layout.html" %}
+
+{% block title %}线下商户会员预付费解决方案 – 钱沿支付{% endblock %}
+
+{% block bodyClass %}class="bg-gray banner-fixed solution-banner-fixed"{% endblock %}
+
+{% block body %}
+    <section class="container">
+        <div class="page-banner solution-banner solution-banner-6">
+            <div class="page-banner-bg" style="background-image:url('ow_mobile_depend/images/solution/banner6.jpg')">
+                <img class="banner-txt1" src="ow_mobile_depend/images/solution/banner6_txt1.png" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="container solution-header theme-rosy-brown">
+    	<img src="ow_mobile_depend/images/solution/logo-Member.png" alt="" class="solution-icon">
+    	<h1>线下商户会员预付费解决方案</h1>
+    	<small>适用于实体店店铺商户</small>
+    	<nav class="j-navigators">
+    		<a href="#description" class="active">概述</a>
+    		<a href="#scene">应用场景</a>
+    		<a href="#case">成功案例</a>
+    	</nav>
+    </section>
+    <main class="container main">
+        <section class="content-box content-box-white j-affix" id="description">
+            <h2 class="title">概述</h2>
+            <div class="content-box-m">
+                <p>此类商户希望客户能预付会员费，并能实时使用预付资金进行消费，存在吸引客户预付并达到有效转化的需求。钱沿支付可为此类电商平台提供支付终端机，帮助商户快速留存和转化客户。</p>
+            </div>
+        </section>
+
+        <section class="content-box content-box-white j-affix" id="scene">
+            <h2 class="title">应用场景</h2>
+            <div class="content-box-m">
+                <p>针对实体商家会员，为其提供会员预付费服务，促进线下消费，提高资本运作能力。消费者可通过充值消费卡余额，在商家门店直接购买商品。</p>
+                <hr class="dashed-line">
+                <dl class="tb-col-2 fs-14">
+                    <dt>适用行业：</dt>
+                    <dd>零售业/餐饮业/服务业。</dd>
+                    <dt>适用对象：</dt>
+                    <dd>消费者、零售店、食家、酒楼、俱乐部</dd>
+                </dl>
+                <h3 class="box-reset fw-normal purple fs-14">场景展示</h3>
+                <p><img src="ow_mobile_depend/images/solution/img06.jpg" class="responsive-img" alt=""></p>
+            </div>
+        </section>
+
+        <section class="content-box content-box-white j-affix" id="case">
+            <h2 class="title">成功案例</h2>
+            <ul class="img-list">
+                <!-- <li>
+                    <img src="ow_mobile_depend/images/partners/img_12.jpg" alt="">
+                </li> -->
+            </ul>
+        </section>
+    </main>
+{% endblock %}
+
+{% block mainjs %}framwork{% endblock %}
+
+{% block js %}
+<script>
+	require(["app/solution"]);
+</script>
+{% endblock %}

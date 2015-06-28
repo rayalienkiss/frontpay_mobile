@@ -1,0 +1,75 @@
+{% extends "_layout/layout.html" %}
+
+{% block title %}集团供应链跨行支付结算解决方案 – 钱沿支付{% endblock %}
+
+{% block bodyClass %}class="bg-gray banner-fixed solution-banner-fixed"{% endblock %}
+
+{% block body %}
+    <section class="container">
+        <div class="page-banner solution-banner solution-banner-7">
+            <div class="page-banner-bg" style="background-image:url('ow_mobile_depend/images/solution/banner7.jpg')">
+                <img class="banner-txt1" src="ow_mobile_depend/images/solution/banner7_txt1.png" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="container solution-header theme-light-steel-blue">
+    	<img src="ow_mobile_depend/images/solution/logo-SupplyChain.png" alt="" class="solution-icon">
+    	<h1>集团供应链跨行支付结算解决方案</h1>
+    	<small>适用于多对一跨地域、跨行支付的供应链集团</small>
+    	<nav class="j-navigators">
+    		<a href="#description" class="active">概述</a>
+    		<a href="#scene">应用场景</a>
+    		<a href="#case">成功案例</a>
+    	</nav>
+    </section>
+    <main class="container main">
+        <section class="content-box content-box-white j-affix" id="description">
+            <h2 class="title">概述</h2>
+            <div class="content-box-m">
+                <p>传统网银已经无法灵活适应集团供应链的支付清算要求。钱沿支付支持多家银行，一点接入验证后，创新通过债权转移实现跨行跨地域的支付结算，同时实现在途资金的增值。钱沿支付亦能灵活根据核心企业的业务需求，对收付、结算、统计进行个性化统计，并实现与其ERP系统无缝对接。</p>
+            </div>
+        </section>
+
+        <section class="content-box content-box-white j-affix" id="scene">
+            <h2 class="title">应用场景</h2>
+            <div class="content-box-m">
+                <p>针对供应链集团型企业，提供多对一跨地域、跨行支付途径，集团企业通过自动资金归集功能，将其各地市分公司、承包商跨行经营款项统一汇总管理，且账面资金可增值。</p>
+                <hr class="dashed-line">
+                <dl class="tb-col-2 fs-14">
+                    <dt>适用行业：</dt>
+                    <dd>物流/零售业/农牧业/消费品等行业。</dd>
+                    <dt>适用对象：</dt>
+                    <dd>集团企业的分/子公司、承包商、经销商等。</dd>
+                </dl>
+                <h3 class="box-reset fw-normal purple fs-14">场景展示</h3>
+                <p><img src="ow_mobile_depend/images/solution/img07.jpg" class="responsive-img" alt=""></p>
+            </div>
+        </section>
+
+        <section class="content-box content-box-white j-affix" id="case">
+            <h2 class="title">成功案例</h2>
+            <ul class="img-list">
+                <li>
+                    <img src="ow_mobile_depend/images/partners/zhongyuanjituan.jpg" alt="">
+                </li>
+                <li>
+                    <img src="ow_mobile_depend/images/partners/kunbaijituan.jpg" alt="">
+                </li>
+                <li>
+                    <img src="ow_mobile_depend/images/partners/goldwind.jpg" alt="">
+                </li>
+                <li>
+                    <img src="ow_mobile_depend/images/partners/chinamobile.jpg" alt="">
+                </li>
+            </ul>
+        </section>
+    </main>
+{% endblock %}
+
+{% block mainjs %}framwork{% endblock %}
+
+{% block js %}
+<script>
+	require(["app/solution"]);
+</script>
+{% endblock %}
