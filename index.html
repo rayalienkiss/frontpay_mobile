@@ -8,29 +8,30 @@
 
 {% block body %}
 	<div class="container">
-		<div class="screen active">
+		<div class="screen">
 			<div class="screen-wrap">
 				<section class="page page1">
-	    			<img src="ow_mobile_depend/images/index/slide-txt1.png" alt="创新支付 因需而变" class="page1-txt1">
-	    			<img src="ow_mobile_depend/images/index/slide-txt2.png" alt="" class="page1-txt2">
+	    			<img data-src="ow_mobile_depend/images/index/slide-txt1.png" alt="创新支付 因需而变" class="page1-txt1">
+	    			<img data-src="ow_mobile_depend/images/index/slide-txt2.png" alt="" class="page1-txt2">
 	    		</section>
 	    		<section class="page page2">
-	    			<img src="ow_mobile_depend/images/index/p2.jpg" class="page2-bg">
-	    			<img src="ow_mobile_depend/images/index/page2-txt1.png" alt="创新支付 因需而变" class="page2-txt1">
-	    			<img src="ow_mobile_depend/images/index/page2-txt2.png" alt="" class="page2-txt2">
-	    			<img src="ow_mobile_depend/images/index/page2-txt3.png" alt="" class="page2-txt3">
+	    			<img data-src="ow_mobile_depend/images/index/p2.jpg" class="page2-bg">
+	    			<img data-src="ow_mobile_depend/images/index/page2-txt1.png" alt="创新支付 因需而变" class="page2-txt1">
+	    			<img data-src="ow_mobile_depend/images/index/page2-txt2.png" alt="" class="page2-txt2">
+	    			<img data-src="ow_mobile_depend/images/index/page2-txt3.png" alt="" class="page2-txt3">
 	    		</section>
 	    		<section class="page page3">
-	    			<img src="ow_mobile_depend/images/index/slide-txt1.png" alt="创新支付 因需而变" class="page1-txt1">
-	    			<img src="ow_mobile_depend/images/index/slide-txt2.png" alt="" class="page1-txt2">
+	    			<img data-src="ow_mobile_depend/images/index/page3-txt1.png" alt="" class="page3-txt1">
+	    			<img data-src="ow_mobile_depend/images/index/page3-txt2.png" alt="" class="page3-txt2">
 	    		</section>
 	    		<section class="page page4">
-	    			<img src="ow_mobile_depend/images/index/slide-txt1.png" alt="创新支付 因需而变" class="page1-txt1">
-	    			<img src="ow_mobile_depend/images/index/slide-txt2.png" alt="" class="page1-txt2">
+	    			<img data-src="ow_mobile_depend/images/index/page4-txt1.png" alt="" class="page4-txt1">
+	    			<img data-src="ow_mobile_depend/images/index/page4-txt2.png" alt="" class="page4-txt2">
+	    			<img data-src="ow_mobile_depend/images/index/page4-txt3.png" alt="" class="page4-txt3">
 	    		</section>
 	    		<section class="page page5">
-	    			<img src="ow_mobile_depend/images/index/slide-txt1.png" alt="创新支付 因需而变" class="page1-txt1">
-	    			<img src="ow_mobile_depend/images/index/slide-txt2.png" alt="" class="page1-txt2">
+	    			<img data-src="ow_mobile_depend/images/index/page5-txt1.png" alt="" class="page5-txt1">
+	    			<img data-src="ow_mobile_depend/images/index/page5-txt2.png" alt="" class="page5-txt2">
 	    		</section>
 			</div>
 		</div>
@@ -42,6 +43,8 @@
 
 {% block js %}
 	<script>
+		// 图片存放路径
+		var imgUrl = 'ow_mobile_depend/images/index/';
 		require(['app/index']);
 	</script>
 {% endblock %}

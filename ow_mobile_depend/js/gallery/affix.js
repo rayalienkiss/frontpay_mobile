@@ -9,7 +9,7 @@ define('gallery/affix', ['zepto'], function($){
 	$.fn.affix = function(options){
 		var d = {
 			active: 'active',
-			repeat: 1,
+			repeat: 0,
 			top: 0,
 			bottom: 0,
 			after: $.noop

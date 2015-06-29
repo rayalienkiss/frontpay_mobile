@@ -3,33 +3,48 @@
  * amd 模块
  * define(id, export)
  */
-define('app/feedBack', ['zepto', 'layer/layer'], function($, dialog) {
+define('app/feedBack', ['zepto', 'layer/layer', 'imagelazyloader'], function($, dialog, imagelazyloader) {
 	
-
     $(document).ready(function(){
-        dialog.open({
-                title: '提示',
-                content: '你是想确认呢，还是想取消呢？',
-                btn: ['确认', '取消'],
-                shadeClose: false,
-                yes: function(){
-                    dialog.open({content: '你点了确认', time: 1});
-                }, no: function(){
-                    dialog.open({content: '你选择了取消', time: 1});
+        $('#j-submit').on('click', function(){
+            $('#j-fb-form').submit();
+        })
+
+        $('#j-fb-form').on('submit', function(e) {
+
+            $.ajax({
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                type: 'post',
+                dataType: 'json',
+                success: function(res){
+                    if(res.status == 1) {
+                        dialog.open({
+                                title: '提示',
+                                content: '你是想确认呢，还是想取消呢？',
+                                btn: ['确认'],
+                                shadeClose: false,
+                                yes: function(){
+                                    // 页面调整
+                                    location.href = "/";
+                                }
+                        });
+                    } else {
+                        dialog.open({
+                            title: '提示',
+                            content: res.msg
+                        });
+                    }
+                },
+                error: function(res){
+                    dialog.open({
+                        title: '提示',
+                        content: res.responseText
+                    });
                 }
             });
-        $('.j-submit').on('click', function(){
-            dialog.open({
-                title: '提示',
-                content: '你是想确认呢，还是想取消呢？',
-                btn: ['确认', '取消'],
-                shadeClose: false,
-                yes: function(){
-                    dialog.open({content: '你点了确认', time: 1});
-                }, no: function(){
-                    dialog.open({content: '你选择了取消', time: 1});
-                }
-            });
+
+            e.preventDefault();
         })
     });
 });
