@@ -12,11 +12,22 @@ define('app/solution', ['zepto', 'gallery/affix'], function($, Affix) {
         var docH = $(document).height();
         var winH = window.innerHeight;
         var bannerH = $('.page-banner').height();
-        $solution.css({
+
+        $(window).on('scroll.hidebanner', function(){
+            var st = $(this).scrollTop();
+            if(st >= pos.top) {
+                $solution.addClass('fixed');
+                $('.page-banner').hide();
+            } else {
+                $solution.removeClass('fixed');
+                $('.page-banner').show();
+            }
+        });
+        /*$solution.css({
             "top": hH + bannerH +"px"
         }).addClass('fixed');
 
-        $('.main').css({ "padding-top": sH + bannerH +"px"});
+        $('.main').css({ "padding-top": sH + bannerH +"px"});*/
 
         // ---- 滚动组合，有点凌乱，bug出没 -_-!!!
         var oNav = $('.j-navigators a');
@@ -25,7 +36,9 @@ define('app/solution', ['zepto', 'gallery/affix'], function($, Affix) {
                 var id = obj[0].id;
                 var pos = obj.position();
                 var st = $(window).scrollTop();
-                if(pos.top >= st + sH + bannerH + hH) {
+                if(st === 0){
+                    oNav.removeClass('active').eq(0).addClass('active');
+                } else if(pos.top >= st + sH + hH) {
                     oNav.removeClass('active').filter('[href="#'+ id +'"]').addClass('active');
                 }
             }
@@ -60,8 +73,9 @@ define('app/solution', ['zepto', 'gallery/affix'], function($, Affix) {
                 $(this).addClass('active');
                 var pos = obj.position();
                 var st = $(window).scrollTop();
-                var distance = pos.top - sH - bannerH - hH;
-                scrollAnim(distance, distance - st);
+                var distance = pos.top + sH + hH;
+                $(window).scrollTop(distance);
+                //scrollAnim(distance, distance - st);
             }
             
             e.preventDefault();

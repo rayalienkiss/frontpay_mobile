@@ -12,7 +12,7 @@ define('gallery/affix', ['zepto'], function($){
 			repeat: 0,
 			top: 0,
 			bottom: 0,
-			after: $.noop
+			after: function(){}
 		};
 
 		return $(this).each(function(){
@@ -31,7 +31,7 @@ define('gallery/affix', ['zepto'], function($){
 	        var handler = {
 	        	show: function(){
 	        		that.addClass(d.active);
-	        		d.after.call(null, that);
+	        		typeof config.after === "function" && config.after.call(null, that);
 	        	},
 	        	hide: function() {
 	        		config.repeat && that.removeClass(d.active);
@@ -41,7 +41,7 @@ define('gallery/affix', ['zepto'], function($){
 	        $(window).on('scroll.affix', function(){
 	            var st = $(this).scrollTop();
 	            if(config.top > 0){
-	            	handler[st > config.top ? 'show' : 'hide']();
+	            	handler[st > config.top ? 'show' : 'hide'](st);
 	            	return;
 	            }
 	            if(config.bottom > 0){

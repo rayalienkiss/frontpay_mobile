@@ -17,6 +17,26 @@ define('framwork', ['zepto',  'fastclick', 'gallery/affix'], function($, FastCli
 
     $(document).ready(function(){
 
+        // 隐藏地址
+        /*var self = document.getElementsByTagName('body')[0];
+        if (self.requestFullscreen) {
+            //html5新增的全屏方法
+            self.requestFullscreen();
+        } else if (self.mozRequestFullScreen) {
+            //针对mozlia内核的hack
+            self.mozRequestFullScreen();
+        } else if (self.webkitRequestFullScreen) {
+            //针对webkit内核的hack
+            self.webkitRequestFullScreen();
+        }*/
+        /*if(document.documentElement.scrollHeight <= document.documentElement.clientHeight) {  
+            var bodyTag = document.getElementsByTagName('body')[0];  
+            bodyTag.style.height = document.documentElement.clientWidth / screen.width * screen.height + 'px';  
+        }  
+        setTimeout(function() {  
+            window.scrollTo(0, 1)  
+        }, 0); */
+
         $('[data-spy="affix"]').affix();
         $('[data-toggle]').switchClass();
 

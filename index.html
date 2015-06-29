@@ -7,6 +7,7 @@
 {% block bodyClass %}class="index-body"{% endblock %}
 
 {% block body %}
+	<div class="loading"><span>加载中...</span></div>
 	<div class="container">
 		<div class="screen">
 			<div class="screen-wrap">
@@ -43,8 +44,8 @@
 
 {% block js %}
 	<script>
-		// 图片存放路径
-		var imgUrl = 'ow_mobile_depend/images/index/';
+		// 网站参数配置
+    	define('Config', { imgUrl: 'ow_mobile_depend/images/index/'});
 		require(['app/index']);
 	</script>
 {% endblock %}

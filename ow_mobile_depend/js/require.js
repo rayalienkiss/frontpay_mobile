@@ -41,5 +41,6 @@ require.config({
 	paths: {
 		'jquery': 'jquery-2.1.1.min',
 		'zepto': 'zepto'
-	}
+	},
+	waitSeconds: 0 // 不超时
 });

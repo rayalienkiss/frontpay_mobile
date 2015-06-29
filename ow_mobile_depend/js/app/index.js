@@ -3,19 +3,17 @@
  * amd 模块
  * define(id, export)
  */
-define('app/index', ['zepto', 'fullpage/zepto.fullpage', 'layer/layer', 'gallery/imgLoader'], function($, fullPage, layer, imgLoader) {
+define('app/index', ['Config', 'zepto', 'fullpage/zepto.fullpage', 'layer/layer', 'gallery/imgLoader'], function(Config, $, fullPage, layer, imgLoader) {
 	
-
     $(document).ready(function(){
         // loading
+        $('.loading').hide();
         var dialog = layer.open({
             type: 2,
             //shade: false,
             time: 9999999999,
             content: '<div id="loading-txt">页面加载中…</div>',
         });
-
-        console.log(dialog);
 
         var oImgs = $('img[data-src]'), imgs, bgImgs, loaded = 0;
 
@@ -24,7 +22,7 @@ define('app/index', ['zepto', 'fullpage/zepto.fullpage', 'layer/layer', 'gallery
             return $(this).attr('data-src');
         });
         bgImgs = ['p1.jpg', 'p3.jpg', 'p4.jpg', 'p5.jpg'].map(function(img){
-            return imgUrl + img;
+            return Config.imgUrl + img;
         })
 
         imgs = imgs.concat(bgImgs);
