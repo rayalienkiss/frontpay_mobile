@@ -124,4 +124,4 @@ define('framwork', ['zepto',  'fastclick', 'gallery/affix'], function($, FastCli
 
 })
 
-require(['framwork']);
+// require(['framwork']);

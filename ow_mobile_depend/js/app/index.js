@@ -57,11 +57,11 @@ define('app/index', ['Config', 'zepto', 'fullpage/zepto.fullpage', 'layer/layer'
                 },
                 afterChange: function(data) {
                     if(pageLen == data.cur + 1) { // 最后一页
-                        setTimeout(function(){ $('footer').addClass('active');}, 600);
-                        $('.start').hide();
+                        setTimeout(function(){ $('footer').addClass('active');}, 1000);
+                        $('.start').addClass('end');
                     } else{
                         $('footer').removeClass('active');
-                        $('.start').show();
+                        $('.start').removeClass('end');
                     }
                 }
             });

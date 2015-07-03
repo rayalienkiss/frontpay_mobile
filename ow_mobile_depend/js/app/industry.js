@@ -3,7 +3,7 @@
  * amd 模块
  * define(id, export)
  */
-define('app/industry', ['Config', 'zepto', 'gallery/affix', 'fx', 'touch', 'layer/layer', 'gallery/imgLoader'], function(Config, $, Affix, Anim, Touch, layer, imgLoader) {
+define('app/industry', ['Config', 'zepto', 'gallery/affix', 'layer/layer', 'gallery/imgLoader'], function(Config, $, Affix, layer, imgLoader) {
     $(document).ready(function(){
        var $banner = $('.solution-top');
        var bannerH = $banner.height();

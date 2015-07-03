@@ -15,7 +15,7 @@ define('app/solution', ['zepto', 'gallery/affix'], function($, Affix) {
 
         $(window).on('scroll.hidebanner', function(){
             var st = $(this).scrollTop();
-            if(st >= pos.top) {
+            if(st >= pos.top + hH) {
                 $solution.addClass('fixed');
                 $('.page-banner').hide();
             } else {
@@ -71,11 +71,11 @@ define('app/solution', ['zepto', 'gallery/affix'], function($, Affix) {
             if(obj) {
                 oNav.removeClass('active');
                 $(this).addClass('active');
-                var pos = obj.position();
+                var pos = obj.offset();
                 var st = $(window).scrollTop();
-                var distance = pos.top + sH + hH;
-                $(window).scrollTop(distance);
-                //scrollAnim(distance, distance - st);
+                var distance = pos.top - sH - hH;
+                //$(window).scrollTop(distance);
+                scrollAnim(distance, distance - st);
             }
             
             e.preventDefault();

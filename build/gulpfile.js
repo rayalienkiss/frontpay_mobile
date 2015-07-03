@@ -31,6 +31,7 @@ var spritesmith = require('gulp.spritesmith');
 var merge = require('merge-stream');
 
 var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var del = require('del')
 
@@ -165,6 +166,19 @@ gulp.task('js', function(){
                 .pipe(connect.reload())
 })
 
+gulp.task('main', ['js'], function(){
+    var jsArr = ['require', 'zepto', 'fastclick', 'gallery/affix','layer/layer', 'gallery/imgLoader', 'framework'].map(function(item){
+        return staticPath+'/js/'+item+'.js';
+    });
+    return gulp.src(jsArr)
+                .pipe(sourcemaps.init())
+                .pipe(concat('main.js'))
+                .pipe(uglify())
+                .pipe(sourcemaps.write('../maps'))
+                .pipe(gulp.dest(distPath+'/js'))
+                .pipe(connect.reload());
+});
+
 gulp.task('plugin', function(){
     return gulp.src(filePaths.plguinStyle)
                 .pipe(minifyCSS({compatibility: 'ie7'}))
@@ -211,6 +225,6 @@ gulp.task('watch', function(){
 /*------ 默认启动任务 ------ */
 gulp.task('default', ['clean'], function(){
     //gulp.start(['sprite','iconfont', 'images', 'less', 'js', 'template', 'watch', 'server']);
-    gulp.start(['less', 'js', 'plugin', 'images', 'template', 'watch', 'server']);
+    gulp.start(['less', 'js',  'plugin', 'images', 'template', 'watch', 'server']);
 });
 
