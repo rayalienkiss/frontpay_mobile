@@ -4,7 +4,8 @@
  * Copyright 2014 yanhaijing. All Rights Reserved
  * Licensed under MIT (https://github.com/yanhaijing/zepto.fullpage/blob/master/LICENSE)
  */
-define('fullpage/zepto.fullpage', ['zepto'], function($) {
+define('fullpage/zepto.fullpage',  function(require) {
+    var $ = require('zepto');
     if (typeof $ === 'undefined') {
         throw new Error('zepto.fullpage\'s script requires Zepto');
     }
@@ -208,4 +209,6 @@ define('fullpage/zepto.fullpage', ['zepto'], function($) {
             fullpage[val].apply(fullpage, [].slice.call(arguments, 0));
         };
     });
+
+    return $.fn.fullpage;
 });

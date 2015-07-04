@@ -9,7 +9,6 @@
   "author": "paywefrontside",
   "license": "Apache License",
   "dependencies": {
-    "connect": "^3.4.0",
     "del": "^1.2.0",
     "gulp": "^3.8.10",
     "gulp-clean": "^0.3.1",
@@ -21,10 +20,7 @@
     "gulp.spritesmith": "^3.8.2",
     "imagemin-pngquant": "^4.1.0",
     "merge-stream": "^0.1.7",
-    "minimist": "^1.1.1",
     "nunjucks": "^1.1.0",
-    "serve-index": "^1.7.0",
-    "serve-static": "^1.10.0",
     "through2": "^0.6.3"
   },
   "devDependencies": {

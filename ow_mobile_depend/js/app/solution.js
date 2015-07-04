@@ -3,7 +3,10 @@
  * amd 模块
  * define(id, export)
  */
-define('app/solution', ['zepto', 'gallery/affix'], function($, Affix) {
+define('app/solution', function(require) {
+    var $ = require('zepto');
+    var Affix = require('gallery/affix');
+
     $(document).ready(function(){
         var $solution = $('.solution-header');
         var pos = $solution.position();

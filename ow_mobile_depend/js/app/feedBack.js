@@ -3,7 +3,10 @@
  * amd 模块
  * define(id, export)
  */
-define('app/feedBack', ['zepto', 'layer/layer', 'imagelazyloader'], function($, dialog, imagelazyloader) {
+define('app/feedBack', function(require) {
+
+    var $ = require('zepto');
+    var dialog = require('layer/layer');
 	
     $(document).ready(function(){
         $('#j-submit').on('click', function(){

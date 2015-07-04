@@ -2,7 +2,9 @@
 //     (c) 2010-2015 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
 
-define('touch', ['zepto'], function($){
+define('touch', function(require){
+  var $ = require('zepto');
+
   var touch = {},
     touchTimeout, tapTimeout, swipeTimeout, longTapTimeout,
     longTapDelay = 750,

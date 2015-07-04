@@ -31,9 +31,8 @@
     </main>
 {% endblock %}
 
-{% block mainjs %}framwork{% endblock %}
 {% block js %}
 <script>
-    require(['app/feedBack'])
+    seajs.use(['app/feedBack'])
 </script>
 {% endblock %}

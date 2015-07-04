@@ -1,4 +1,4 @@
-;(function () {
+define('fastclick', function () {
 	'use strict';
 
 	/**
@@ -829,7 +829,7 @@
 	if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
 
 		// AMD. Register as an anonymous module.
-		define(function() {
+		define('fastclick', function() {
 			return FastClick;
 		});
 	} else if (typeof module !== 'undefined' && module.exports) {
@@ -838,4 +838,6 @@
 	} else {
 		window.FastClick = FastClick;
 	}
-}());
+
+	return FastClick;
+});

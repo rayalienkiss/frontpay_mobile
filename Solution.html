@@ -157,12 +157,10 @@
     </main>
 {% endblock %}
 
-{% block mainjs %}framwork{% endblock %}
-
 {% block js %}
 <script>
     // 网站参数配置
-    define('Config', { imgUrl: 'ow_mobile_depend/images/solution/'});
-    require(['app/industry']);
+    var webConfig = {imgUrl: 'ow_mobile_depend/images/solution/'};
+    seajs.use(['app/industry']);
 </script>
 {% endblock %}

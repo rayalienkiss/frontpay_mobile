@@ -2,7 +2,9 @@
 //     (c) 2010-2014 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
 
-define('fx', ['zepto'], function($){
+define('fx', function(require){
+  var $ = require('zepto');
+
   var prefix = '', eventPrefix, endEventName, endAnimationName,
     vendors = { Webkit: 'webkit', Moz: '', O: 'o' },
     document = window.document, testEl = document.createElement('div'),

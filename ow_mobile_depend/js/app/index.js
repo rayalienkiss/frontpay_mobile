@@ -3,8 +3,21 @@
  * amd 模块
  * define(id, export)
  */
-define('app/index', ['Config', 'zepto', 'fullpage/zepto.fullpage', 'layer/layer', 'gallery/imgLoader'], function(Config, $, fullPage, layer, imgLoader) {
-	
+define('app/index', function(require) {
+
+    //var Config = require('Config');
+    var $ = require('zepto');
+   // console.log($);
+   // return;
+    var fullPage = require('fullpage/zepto.fullpage');
+    var layer = require('layer/layer');
+    var imgLoader = require('gallery/imgLoader');
+    // var frameWork = require('framework');
+
+    var Config = typeof webConfig == 'undefined' ? {"imgUrl": "ow_mobile_depend/images/index/"} : webConfig;
+
+	//console.log($.fn.fullpage);
+    //return;
     $(document).ready(function(){
         // loading
         $('.loading').hide();

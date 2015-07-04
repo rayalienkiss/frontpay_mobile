@@ -67,10 +67,8 @@
     </main>
 {% endblock %}
 
-{% block mainjs %}framwork{% endblock %}
-
 {% block js %}
 <script>
-	require(["app/solution"]);
+	seajs.use(["app/solution"]);
 </script>
 {% endblock %}

@@ -2,7 +2,11 @@
  * amd 模块
  * define(id, export)
  */
-define('framwork', ['zepto',  'fastclick', 'gallery/affix'], function($, FastClick, Affix) {
+define('framwork', function(require) {
+
+    var $ = require('zepto');
+    var FastClick = require('fastclick');
+    var Affix = require('gallery/affix');
 
     $.fn.switchClass = function(){
         $(this).on('click', function(){
@@ -124,4 +128,4 @@ define('framwork', ['zepto',  'fastclick', 'gallery/affix'], function($, FastCli
 
 })
 
-// require(['framwork']);
+seajs.use(['framwork']);

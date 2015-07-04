@@ -4,7 +4,9 @@
  * @group:  paywefrontside
  * @date:   2015-06-27
  */
-define('gallery/affix', ['zepto'], function($){
+define('gallery/affix', function(require){
+
+	var $ = require('zepto');
 
 	$.fn.affix = function(options){
 		var d = {

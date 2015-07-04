@@ -3,7 +3,15 @@
  * amd 模块
  * define(id, export)
  */
-define('app/industry', ['Config', 'zepto', 'gallery/affix', 'layer/layer', 'gallery/imgLoader'], function(Config, $, Affix, layer, imgLoader) {
+define('app/industry', function(require) {
+
+    //var Config = require('confing');
+    var $ = require('zepto');
+    var layer = require('layer/layer');
+    var imgLoader = require('gallery/imgLoader');
+
+    var Config = typeof webConfig == 'undefined' ? {"imgUrl": "ow_mobile_depend/images/solution/"} : webConfig;
+
     $(document).ready(function(){
        var $banner = $('.solution-top');
        var bannerH = $banner.height();

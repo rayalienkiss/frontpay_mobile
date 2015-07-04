@@ -40,12 +40,10 @@
 	</div>
 {% endblock %}
 
-{% block mainjs %}framwork{% endblock %}
-
 {% block js %}
 	<script>
 		// 网站参数配置
-    	define('Config', { imgUrl: 'ow_mobile_depend/images/index/'});
-		require(['app/index']);
+    	var webConfig = {imgUrl: 'ow_mobile_depend/images/index/'};
+		seajs.use(['app/index']);
 	</script>
 {% endblock %}

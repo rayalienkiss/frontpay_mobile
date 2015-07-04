@@ -39,7 +39,6 @@ var autoBrowser = require('./autoBrowser')
 var getIPAddress = require('./getIPAddress')
 //var Server = require('./server')
 
-
 //模板路径
 var tplPath = '../';
 //输出路径
@@ -160,20 +159,20 @@ gulp.task('less', function(){
 gulp.task('js', function(){
     return gulp.src(filePaths.js)
                 .pipe(sourcemaps.init())
-                .pipe(uglify())
+                .pipe(uglify({mangle: false}))
                 .pipe(sourcemaps.write('../maps'))
                 .pipe(gulp.dest(distPath+'/js'))
                 .pipe(connect.reload())
 })
 
-gulp.task('main', ['js'], function(){
-    var jsArr = ['require', 'zepto', 'fastclick', 'gallery/affix','layer/layer', 'gallery/imgLoader', 'framework'].map(function(item){
+gulp.task('mainjs', ['js'], function(){
+    var jsArr = ['sea','zepto', 'fastclick', 'gallery/affix','layer/layer', 'gallery/imgLoader', 'framwork'].map(function(item){
         return staticPath+'/js/'+item+'.js';
     });
     return gulp.src(jsArr)
                 .pipe(sourcemaps.init())
                 .pipe(concat('main.js'))
-                .pipe(uglify())
+                .pipe(uglify({mangle: false}))
                 .pipe(sourcemaps.write('../maps'))
                 .pipe(gulp.dest(distPath+'/js'))
                 .pipe(connect.reload());
@@ -195,7 +194,7 @@ gulp.task('template', function(){
 });
 
 /* 启动服务 */
-gulp.task('server', ['template'], function(next){
+gulp.task('server', ['less', 'mainjs',  'plugin', 'images', 'template'], function(next){
     var port = config.port || 8000;
     var hostname =  getIPAddress() || 'localhost';
     connect.server({
@@ -225,6 +224,6 @@ gulp.task('watch', function(){
 /*------ 默认启动任务 ------ */
 gulp.task('default', ['clean'], function(){
     //gulp.start(['sprite','iconfont', 'images', 'less', 'js', 'template', 'watch', 'server']);
-    gulp.start(['less', 'js',  'plugin', 'images', 'template', 'watch', 'server']);
+    gulp.start(['server', 'watch']);
 });
 
