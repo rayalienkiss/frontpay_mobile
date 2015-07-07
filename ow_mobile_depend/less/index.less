@@ -85,9 +85,6 @@
 			left: 0;
 			width: 100%;
 			height: auto;
-
-			.opacity(0);
-			.transition(all, .5s, ease-in, .2s);
 		}
 
 		.page2-txt1{
@@ -248,7 +245,7 @@
 				.opacity(1); 
 			}
 
-			.page2-bg,.page2-txt1,.page2-txt2, .page2-txt3,
+			.page2-txt1,.page2-txt2, .page2-txt3,
 			.page3-txt1,.page3-txt2,
 			.page4-txt1,.page4-txt2,.page4-txt3,
 			.page5-txt1,.page5-txt2{
@@ -275,39 +272,22 @@
 }
 
 /* 箭头 */
-@-webkit-keyframes start {
-    0%,30% {
-        opacity: 0.2;
-        -webkit-transform: translate(10px, 0);
-    }
-    60% {
-        opacity: 1;
-        -webkit-transform: translate(0,0);
-    }
-    100% {
-        opacity: 0.2;
-        -webkit-transform: translate(-10px, 0);
-    }
+
+@-webkit-keyframes start{
+	0%,30%{opacity:.2;-webkit-transform:translate(0,10px)}
+	60%{opacity:1;-webkit-transform:translate(0,0)}
+	100%{opacity:.2;-webkit-transform:translate(0,-5px)}
 }
-@keyframes start {
-    0%,30% {
-        opacity: 0.2;
-        transform: translate(10px, 0);
-    }
-    60% {
-        opacity: 1;
-        transform: translate(0,0);
-    }
-    100% {
-        opacity: 0.2;
-        transform: translate(-10px, 0);
-    }
+@keyframes start{
+	0%,30%{opacity:.2;transform:translate(0,10px)}
+	60%{opacity:1;transform:translate(0,0)}
+	100%{opacity:.2;transform:translate(0,-5px)}
 }
 .start{
     position: fixed;
-    right: 10px;
+    left: 50%;
     margin-left: -17px;
-    top: 50%;
+    top: 95%;
     margin-top: -34px;
     width: 34px;
     height: 34px;
@@ -321,21 +301,21 @@
     margin-left: -9px;
     width: 15px;
     height: 15px;
-    border-width: 0 4px 4px 0;
+    border-width: 4px 4px 0 0;
     border-color: @white;
     border-style: solid;
     background-size: 100% 100%;
     .rotate(-45deg);
 }
 
-.start.end{
-	right: auto;
-	left: 10px;
+// .start.end{
+// 	right: auto;
+// 	left: 10px;
 	
-	b{
-		.rotate(135deg);
-	}
-}
+// 	b{
+// 		.rotate(135deg);
+// 	}
+// }
 
 
 //--- 兼容低屏幕

@@ -166,7 +166,7 @@ gulp.task('js', function(){
 })
 
 gulp.task('mainjs', ['js'], function(){
-    var jsArr = ['sea','zepto', 'fastclick', 'gallery/affix','layer/layer', 'gallery/imgLoader', 'framwork'].map(function(item){
+    var jsArr = ['sea','zepto', 'touch', 'fastclick', 'gallery/affix','layer/layer', 'gallery/imgLoader', 'framwork'].map(function(item){
         return staticPath+'/js/'+item+'.js';
     });
     return gulp.src(jsArr)
@@ -215,7 +215,7 @@ gulp.task('watch', function(){
 	//gulp.watch(filePaths.iconfont, ['iconfont']);
 	gulp.watch(filePaths.images, ['images']);
 	gulp.watch(filePaths.less[0], ['less']);
-	gulp.watch(filePaths.js, ['js']);
+	gulp.watch(filePaths.js, ['mainjs']);
     gulp.watch(filePaths.watchHtml, ['template']);
    // gulp.watch(filePaths.sprite, ['sprite']);
 	//gulp.watch(distPath+'/images/sprite/**/**', ['less']);

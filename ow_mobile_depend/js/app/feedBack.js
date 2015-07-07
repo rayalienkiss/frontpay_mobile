@@ -9,11 +9,12 @@ define('app/feedBack', function(require) {
     var dialog = require('layer/layer');
 	
     $(document).ready(function(){
-        $('#j-submit').on('click', function(){
-            $('#j-fb-form').submit();
-        })
+        // $('#j-submit').on('click', function(){
+        //     $('#j-fb-form').submit();
+        // })
 
         $('#j-fb-form').on('submit', function(e) {
+            e.preventDefault();
 
             $.ajax({
                 url: $(this).attr('action'),
@@ -47,7 +48,7 @@ define('app/feedBack', function(require) {
                 }
             });
 
-            e.preventDefault();
+            
         })
     });
 });

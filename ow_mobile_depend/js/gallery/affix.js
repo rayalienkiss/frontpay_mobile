@@ -11,13 +11,63 @@ define('gallery/affix', function(require){
 	$.fn.affix = function(options){
 		var d = {
 			active: 'active',
-			repeat: 0,
-			top: 0,
-			bottom: 0,
+			top: window.innerHeight,
 			after: function(){}
 		};
 
-		return $(this).each(function(){
+		var config = $.extend(d, options || {}),
+			handler = {
+				getAttr: function(obj){
+					return {
+						active: obj.attr('data-active') || config.active,
+						top: obj.attr('data-offset-top') || config.top
+					}
+				},
+	        	show: function(obj){
+	        		var cfg = this.getAttr(obj);
+	        		obj.addClass(cfg.active);
+	        		typeof config.after === "function" && config.after.call(null, obj);
+	        	}
+	        },
+	        /*
+			*判断元素是否出现在viewport中
+			*/
+			inViewport = (function(){
+				var belowthefold = function (elem) {
+					return elem.getBoundingClientRect().top < 0;
+				};
+				var abovethetop = function (elem) {
+					return elem.getBoundingClientRect().top > window.innerHeight;
+				};
+				return function(elem){
+					return !belowthefold(elem) && !abovethetop(elem); 
+				}
+			})();
+
+		var collections = $(this).map(function(){
+			return {
+				obj: $(this),
+				top: $(this).offset().top
+			}
+		});
+
+		if(collections.length > 0) {
+			$(window).on('scroll.scrollspy', function(){
+				var st = $(this).scrollTop();
+				collections.forEach(function(model, index){
+					var attr = handler.getAttr(model.obj);
+					if(model.top <= st + attr.top && inViewport(model.obj[0])) {
+						handler.show(model.obj);
+						return;
+					}
+				})
+			});
+		}
+		
+
+		//console.log(collections);
+
+		/*return $(this).each(function(){
 			var that = $(this);
 			var config = $.extend(d, options || {});
 	        var offsetTop = that.position().top;
@@ -42,17 +92,11 @@ define('gallery/affix', function(require){
 
 	        $(window).on('scroll.affix', function(){
 	            var st = $(this).scrollTop();
-	            if(config.top > 0){
-	            	handler[st > config.top ? 'show' : 'hide'](st);
-	            	return;
-	            }
-	            if(config.bottom > 0){
-	            	handler[st + winH > docH - config.bottom ? 'show' : 'hide']();
-	            	return;
-	            }
-	            handler[st + winH - config.top > offsetTop ? 'show' : 'hide']();
+	            var top = st + winH - config.top;
+	            handler[top > offsetTop ? 'show' : 'hide']();
 	        })
-		})
+		})*/
+		
 	};
 
 	return $.fn.affix;

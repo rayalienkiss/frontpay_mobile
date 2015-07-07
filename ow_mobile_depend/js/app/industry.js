@@ -9,48 +9,86 @@ define('app/industry', function(require) {
     var $ = require('zepto');
     var layer = require('layer/layer');
     var imgLoader = require('gallery/imgLoader');
+    var Touch = require('touch');
 
     var Config = typeof webConfig == 'undefined' ? {"imgUrl": "ow_mobile_depend/images/solution/"} : webConfig;
 
     $(document).ready(function(){
        var $banner = $('.solution-top');
        var bannerH = $banner.height();
-        var drag = false;
-        var startX = 0, startY = 0;
+       var viewW = window.innerWidth;
+        var drag = true;
+        var startY = 0, moveY = 0;
 
-        /*$banner.on('touchstart', function(e){
-            drag = true;
-            startX = e.targetTouches[0].pageX;
+        var $txt1 = $banner.find('.solution-bg-txt1');
+        var $txt2 = $banner.find('.solution-bg-txt2');
+        var $txt3 = $banner.find('.solution-bg-txt3');
+        var $bg = $banner.find('.solution-bg');
+
+        var txt1Top = $txt1.position().top,
+            txt2Top = $txt2.position().top,
+            txt3Top = $txt3.position().top;
+
+        var bannerMove = {
+            to: function(y){
+                $banner.css({'height': bannerH + y  + 'px'});
+                $txt1.css({ 'top': txt1Top + y * 2.4 +'px'});
+                $txt2.css({ 'top': txt2Top + y * 1.8 +'px'});
+                $txt3.css({ 'top': txt3Top + y * 1.8 +'px'});
+                $bg.css({'background-size': viewW * (1+ Math.abs(y / bannerH)) +'px auto' });
+            },
+            back: function(){
+                $banner.css({'height': bannerH + 'px'});
+                $txt1.css({ 'top': txt1Top +'px'});
+                $txt2.css({ 'top': txt2Top +'px'});
+                $txt3.css({ 'top': txt3Top +'px'});
+                $bg.css({'background-size': '100% auto' });
+            }
+        };
+
+        $banner.css({ 'padding-top': 0, 'height': bannerH+'px'});
+
+        $banner.on('touchstart', function(e){
+            if(!drag) return;
             startY = e.targetTouches[0].pageY;
-
             e.stopPropagation();
         }).on('touchend', function(e){
-            drag = false;
-            startX = e.changedTouches[0].pageX;
-            startY = e.changedTouches[0].pageY;
+            if(moveY < 0) {
+                var st = $(window).scrollTop();
+                st < 60 ? drag = true : drag = false;
 
-            $window.scrollTop(bannerH);
+               $(window).scrollTop(st - moveY);
+               // 滚动条定时处理
+               var timer = setInterval(function(){
+                    var t = $(window).scrollTop();
+                    // 到达banner高度时
+                    if(t >= bannerH) {
+                        clearInterval(timer);
+                        bannerMove.back();
+                        $(window).scrollTop(bannerH);
+                    } else {
+                        // 自滚动10px
+                        window.scrollBy(0, 10)
+                    }
+               }, 1);               
+            }
 
-            e.stopPropagation();
         }).on('touchmove', function(e){
-            drag = true;
-            var y = e.changedTouches[0].pageY - startY;
-            var x = e.changedTouches[0].pageX - startX;
-            e.stopPropagation();
-        });*/
-        /*$banner.on('touchstart', function(e){
-            console.log(e);
-        })
-        $banner.on('swipeUp', function(e) {
-            drag = true;
-            alert(e);
-            e.stopPropagation();
-        });*/
-
-        $(document).on('swipeUp', function(e) {
-            drag = true;
-            $window.scrollTop(bannerH);
             e.preventDefault();
+            // 缩放或不是拖拽事件
+            if(e.touches.length > 1 || e.scale && e.scale !== 1){
+                return;
+            }
+            // 移动的高度
+            moveY = e.changedTouches[0].pageY - startY;
+            if(moveY < 0){ // 向上
+                bannerMove.to(moveY);
+            }             
+        });
+
+        $(window).on('scroll', function(){
+            var st = $(this).scrollTop();
+            st < 60 ? drag = true : drag = false;
         });
 
         // loading

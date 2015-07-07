@@ -8,58 +8,52 @@ define('app/solution', function(require) {
     var Affix = require('gallery/affix');
 
     $(document).ready(function(){
-        var $solution = $('.solution-header');
-        var pos = $solution.position();
-        var sH = $solution.height();
-        var hH = $('.header').height();
-        var docH = $(document).height();
-        var winH = window.innerHeight;
-        var bannerH = $('.page-banner').height();
+        var $solution = $('.solution-header'),
+            $nav = $('.j-navigators'),
+            pos = $solution.position(),
+            winH = $(window).height(),
+            hH = $('.header').height(),
+            docH = $(document).height(),
+            navH = $nav.height(),
+            scrollTop = 0;
 
+        /* 锁定导航 */
         $(window).on('scroll.hidebanner', function(){
+            // 导航
             var st = $(this).scrollTop();
-            if(st >= pos.top + hH) {
+            if(st >= pos.top) {
                 $solution.addClass('fixed');
-                $('.page-banner').hide();
             } else {
                 $solution.removeClass('fixed');
-                $('.page-banner').show();
             }
         });
-        /*$solution.css({
-            "top": hH + bannerH +"px"
-        }).addClass('fixed');
 
-        $('.main').css({ "padding-top": sH + bannerH +"px"});*/
-
-        // ---- 滚动组合，有点凌乱，bug出没 -_-!!!
+        // ---- 滚动组合
         var oNav = $('.j-navigators a');
         $('.j-affix').affix({
+            top:  winH * 0.6,
             after: function(obj){
                 var id = obj[0].id;
-                var pos = obj.position();
-                var st = $(window).scrollTop();
-                if(st === 0){
-                    oNav.removeClass('active').eq(0).addClass('active');
-                } else if(pos.top >= st + sH + hH) {
-                    oNav.removeClass('active').filter('[href="#'+ id +'"]').addClass('active');
-                }
+                oNav.removeClass('active').filter('[href="#'+ id +'"]').addClass('active');
             }
         });
-
+    
+        // 获取hash
         var getHash = function(url) {
             var a = document.createElement('a');
             a.href = url;
             return a.hash;
         };
 
+        /* 动画 */
         var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
         function scrollAnim(h, dir) {
             var st = $(window).scrollTop(), speed = dir > 0 ? 50 : -50;
             if(h === st) return;
             st += speed;
 
-            if((dir > 0 && st >= h) || (dir < 0 && st <= h) || docH - winH <= st) {
+
+            if(scrollTop === st || (dir > 0 && st >= h) || (dir < 0 && st <= h) || docH - winH <= st) {
                 $(window).scrollTop(h);
             } else {
                 $(window).scrollTop(st);
@@ -67,16 +61,21 @@ define('app/solution', function(require) {
                     scrollAnim(h, dir);
                 });
             }            
+
+            // 页面最低部
+            scrollTop = st;
         }
 
+        /* 导航点击跳转 */
         oNav.on('click', function(e){
             var obj = $(getHash(e.currentTarget.href));
             if(obj) {
                 oNav.removeClass('active');
                 $(this).addClass('active');
-                var pos = obj.offset();
+                var pos = obj.position();
                 var st = $(window).scrollTop();
-                var distance = pos.top - sH - hH;
+                var dH = $(document).height();
+                var distance =  pos.top - hH - navH;
                 //$(window).scrollTop(distance);
                 scrollAnim(distance, distance - st);
             }

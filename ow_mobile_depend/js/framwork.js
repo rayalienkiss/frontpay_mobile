@@ -7,12 +7,13 @@ define('framwork', function(require) {
     var $ = require('zepto');
     var FastClick = require('fastclick');
     var Affix = require('gallery/affix');
+    var Touch = require('touch');
 
     $.fn.switchClass = function(){
+        var that = $(this);
         $(this).on('click', function(){
             var active = $(this).attr('data-toggle');
-            //var hasClass = $(this).hasClass(active);
-            //$(this)[hasClass ? 'addClass' : 'removeClass'](active);
+            that.removeClass(active);
             $(this).toggleClass(active);
         })
     };
@@ -20,53 +21,37 @@ define('framwork', function(require) {
 	FastClick.attach(document.body);
 
     $(document).ready(function(){
-
-        // 隐藏地址
-        /*var self = document.getElementsByTagName('body')[0];
-        if (self.requestFullscreen) {
-            //html5新增的全屏方法
-            self.requestFullscreen();
-        } else if (self.mozRequestFullScreen) {
-            //针对mozlia内核的hack
-            self.mozRequestFullScreen();
-        } else if (self.webkitRequestFullScreen) {
-            //针对webkit内核的hack
-            self.webkitRequestFullScreen();
-        }*/
-        /*if(document.documentElement.scrollHeight <= document.documentElement.clientHeight) {  
-            var bodyTag = document.getElementsByTagName('body')[0];  
-            bodyTag.style.height = document.documentElement.clientWidth / screen.width * screen.height + 'px';  
-        }  
-        setTimeout(function() {  
-            window.scrollTo(0, 1)  
-        }, 0); */
-
+        /*-- 滚动激活 --*/
         $('[data-spy="affix"]').affix();
+        /*-- 点击切换 --*/
         $('[data-toggle]').switchClass();
 
-        // 页面加载完，可添加动画
+        /*-- 页面加载完，可添加动画 --*/
         $('html').addClass('domReady');
 
-    	//$('#J_loading').hide();
+    	/*-- 滚定页脚 --*/
         var winH = $(window).height(),
             docH = $(document.body).height(),
             footerH = $('.footer').height();
+
         if(winH > docH + footerH) {
             $('.footer').addClass('footer-fixed')
         }
        
-        // banner动画
+        /*-- banner动画 --*/
         $('.page-banner').addClass('active');
 
-        // 菜单
+        /*-- 菜单 --*/
         var menuToggle = (function(){
             var menu = $('.navigator'), btn = $('.header-menu');
             return {
                 show: function(){
+                    $('html').addClass('menu-open');
                     menu.addClass('active');
                     btn.addClass('active');
                 },
                 hide: function(){
+                    $('html').removeClass('menu-open');
                     menu.removeClass('active');
                     btn.removeClass('active');
                 }
@@ -79,53 +64,14 @@ define('framwork', function(require) {
             e.preventDefault();
             return false;
         });
-        $(document).on('click', $.proxy(menuToggle.hide, menuToggle));
+        //$(document).on('click', $.proxy(menuToggle.hide, menuToggle));
 
-        /*setTimeout(function(){
-            $('#J_loading').hide();
-
-            layer.open({
-			    content: '你是想确认呢，还是想取消呢？',
-			    btn: ['确认', '取消'],
-			    shadeClose: false,
-			    yes: function(){
-			        layer.open({content: '你点了确认', time: 1});
-			    }, no: function(){
-			        layer.open({content: '你选择了取消', time: 1});
-			    }
-			});
-        }, 300);*/
+        $(document).on('swipeLeft', function(){
+            menuToggle.show();
+        }).on('swipeRight', function(){
+            menuToggle.hide();
+        });
     });
-
-
-    /*var $banner = $('.page-banner');
-    var drag = false;
-    var startX = 0, startY = 0;
-
-    $banner.on('touchstart', function(e){
-    	drag = true;
-    	startX = e.targetTouches[0].pageX;
-    	startY = e.targetTouches[0].pageY;
-    }).on('touchend', function(e){
-    	drag = false;
-    	startX = e.changedTouches[0].pageX;
-    	startY = e.changedTouches[0].pageY;
-    }).on('touchmove', function(e){
-    	var y = e.changedTouches[0].pageY - startY;
-        var x = e.changedTouches[0].pageX - startX;
-
-        move($banner, x, y);
-    })
-
-    $(document).on('touchmove', function(e) {
-        drag && e.preventDefault();
-    });
-
-    function move($ele, dir, dist) {
-        var translate =  'translateY';
-        $ele.css({'-webkit-transform':translate + '(' + dist + 'px)','transform':translate + '(' + dist + 'px)'});
-    }*/
-
 })
 
 seajs.use(['framwork']);

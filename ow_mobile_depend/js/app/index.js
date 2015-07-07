@@ -4,20 +4,15 @@
  * define(id, export)
  */
 define('app/index', function(require) {
-
-    //var Config = require('Config');
     var $ = require('zepto');
-   // console.log($);
-   // return;
     var fullPage = require('fullpage/zepto.fullpage');
     var layer = require('layer/layer');
     var imgLoader = require('gallery/imgLoader');
-    // var frameWork = require('framework');
+    var Touch = require('touch');
+    var objScreen = $('.screen-wrap');
 
     var Config = typeof webConfig == 'undefined' ? {"imgUrl": "ow_mobile_depend/images/index/"} : webConfig;
 
-	//console.log($.fn.fullpage);
-    //return;
     $(document).ready(function(){
         // loading
         $('.loading').hide();
@@ -53,37 +48,39 @@ define('app/index', function(require) {
             })
 
             // 全屏轮播
-            var pageLen = $('.screen-wrap .page').length;
-            $('.screen-wrap').fullpage({
+            var objPages = objScreen.find('.page');
+            var pageLen = objPages.length;
+            objScreen.fullpage({
                // drag: true,
                 //start: 2,
                 // loop: true,
-                dir:'h',
+                //dir:'h',
                 duration: 100,
                 page: '.page',
-                beforeChange: function(data){
-                    /*if(pageLen == data.next + 1) { // 最后一页
-                        setTimeout(function(){ $('footer').removeClass('active');}, 1000);
-                    } else{
-                        $('footer').addClass('active');
-                    }*/
-                },
                 afterChange: function(data) {
                     if(pageLen == data.cur + 1) { // 最后一页
-                        setTimeout(function(){ $('footer').addClass('active');}, 1000);
                         $('.start').addClass('end');
+                        // 最后一页，向下展现页脚
+                        objPages.eq(data.cur).one('swipeUp', function(){
+                             $('footer').addClass('active');
+                        }).one('swipeDown', function(e) {
+                            $('footer').removeClass('active');
+                            e.stopPropagation();
+                        });
                     } else{
-                        $('footer').removeClass('active');
                         $('.start').removeClass('end');
                     }
                 }
             });
         };
 
+        $('.start').on('click', function(){
+            $.fn.fullpage.moveNext(true);
+        });
+
         // 图片延迟加载
         imgLoader(imgs, function(url, index, len){
             loaded++;
-            //console.log(url, index, len, loaded)
             $('#loading-txt').html(parseInt(loaded * 100 / len) + '%');
             if(loaded >= len) {
                 imgReady();
