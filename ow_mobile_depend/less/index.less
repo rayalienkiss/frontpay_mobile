@@ -6,9 +6,14 @@
 
 @charset "UTF-8";
 
+// .container{
+// 	position: relative;
+// }
+
 .index-body{
 	.brand{
 		background-image: url("@{img-url}/index-logo.png");
+		background-size: auto 34px;
 	}
 	
 	.header-back{
@@ -51,25 +56,89 @@
 	
 	.page{
 		position: relative;
+		background-repeat: no-repeat;
+		background-position: bottom center;
+		background-size: auto 100%;
+
+		.txt{
+			// position: absolute;
+			// left: 50%;
+			// .translate(-50%, 0);
+			// background: url('@{img-url}/index/txt_sprite.png') no-repeat;
+			// background-size: 321px;
+			
+			// 第一屏
+			&.page1-txt1{
+				background-position: 0 -248px;
+			}
+
+			&.page1-txt2{
+				background-position: 0 -347px;
+			}
+			
+			// 第二屏
+			&.page2-txt1{
+				background-position: 0 -449px;
+			}
+			&.page2-txt3{
+				background-position: 0 -35px;
+			}
+
+			// 第三屏
+			&.page3-txt1{
+				background-position: 0 -19px;
+			}
+
+			&.page3-txt2{
+				background-position: 0 -166px;
+			}
+
+			// 第四屏
+			&.page4-txt1{
+				background-position: 0 -92px;
+			}
+
+			&.page4-txt2{
+				background-position: 0 -185px;
+			}
+
+			&.page4-txt3{
+				background-position: 0 -205px;
+			}
+
+			// 第5屏
+			&.page5-txt1{
+				background-position: 0 -376px;
+			}
+
+			&.page5-txt2{
+				background-position: 0 -230px;
+			}
+
+		}
+	}
+
+	.txt{
+			position: absolute;
+			left: 50%;
+			.translate(-50%, 0);
+			// background: url('@{img-url}/index/txt_sprite.png') no-repeat;
+			background-size: 321px;
 	}
 	// 第一屏
 	.page1-txt1{
-		position: absolute;
-		top: 10%;
-		left: 50%;
-		width: 64%;
-		height: auto;
+		top: 82px;
+		width: 210px;
+		height: 95px;
 		.opacity(0);
 		.translate(-50%, 10%);
 		.transition(all, .3s, linear, 0.2s);
 	}
 
 	.page1-txt2{
-		position: absolute;
-		top: 28%;
-		left: 50%;
-		width: 64%;
-		height: auto;
+		top: 172px;
+		width: 210px;
+		height: 25px;
 		.opacity(0);
 		.translate(-50%, 10%);
 		.transition(all, .3s, linear, .5s);
@@ -77,180 +146,140 @@
 
 	// 第二屏
 	.page2{
-		background: #f5f5f6;
-
-		.page2-bg{
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			height: auto;
-		}
+		background-color: #f5f5f6;
 
 		.page2-txt1{
-			position: absolute;
-			top: 13%;
-			left: 14%;
-			width: 50%;
-			height: auto;
-
+			top: 70px;
+			width: 238px;
+			height: 78px;
 			.opacity(0);
 			visibility: hidden;
-			.translate(-10%, 0);
+			.translate(-50%, -10%);
 			.transition(all, .3s, ease-in, .2s);
 		}
 
 		.page2-txt2{
-			position: absolute;
-			top: 21%;
-			left: 38%;
-			width: 50%;
-			height: auto;
+			top: 162px;
+			width: 226px;
+			height: 15px;
 
 			.opacity(0);
 			visibility: hidden;
-			.translate(10%, 0);
+			.translate(-50%, -10%);
 			.transition(all, .3s, ease-in, .5s);
-		}
-
-		.page2-txt3{
-			position: absolute;
-			top: 30%;
-			left: 15%;
-			width: 70%;
-			height: auto;
-
-			.opacity(0);
-			visibility: hidden;
-			.translate(0, 10%);
-			.transition(all, .3s, ease-in, .8s);
 		}
 	}
 
 	// 第3屏
 	.page3{
-		background: #e3e7f1;
+		background-color: #e3e7f1;
 
 		.page3-txt1,.page3-txt2{
 			visibility: hidden;
 			.opacity(0);
-			.translate(0, 20%);
-			.transition(all, .5s, ease-in-out, 0);
+			.translate(-50%, 20%);
+			.transition(all, .5s, ease-in-out, 0.2s);
 		}
 
 		.page3-txt1{
-			position: absolute;
-			top: 15%;
-			width: 65.3%;
-			height: auto;
-			left: 17.5%;
+			top: 82px;
+			width: 210px;
+			height: 70px;
 		}
 
 		.page3-txt2{
-			position: absolute;
-			top: 31%;
-			width: 88.75%;
-			height: auto;
-			left: 5.6%;
+			top: 162px;
+			width: 284px;
+			height: 15px;
 		}
 		
 	}
 
 	.page4{
-		background: #96b4de;	
+		background-color: #96b4de;	
 		
 		.page4-txt1,.page4-txt2,.page4-txt3{
 			visibility: hidden;
 			.opacity(0);
-			.translate(0, -20%);
-			.transition(all, .5s, ease-in-out, 0);
+			.translate(-50%, -20%);
+			.transition(all, .5s, ease-in-out, 0.2s);
 		}
 
 		.page4-txt1{
-			position: absolute;
-			top: 13%;
-			width: 77%;
-			height: auto;
-			left: 11.7%;
+			top: 72px;
+			width:248px;
+			height: 70px;
 		}
 
 		.page4-txt2{
-			position: absolute;
-			top: 28%;
-			width: 79%;
-			height: auto;
-			left: 11.7%;
+			top: 154px;
+			width: 254px;
+			height: 16px;
 		}
 
 		.page4-txt3{
-			position: absolute;
-			top: 34%;
-			width: 92.7%;
-			height: auto;
-			left: 3%;
+			top: 184px;
+			width: 298px;
+			height: 22px;
 		}	
 	}
 
 	.page5{
-		background: #bdd2e1;
+		background-color: #bdd2e1;
 
 		.page5-txt1,.page5-txt2{
 			visibility: hidden;
 			.opacity(0);
-			.translate(0, 20%);
-			.transition(all, .5s, ease-in-out, 0);
+			.translate(-50%, 20%);
+			.transition(all, .5s, ease-in-out, 0.2s);
 		}
 
 		.page5-txt1{
-			position: absolute;
-			top: 16.5%;
-			width: 75.78%;
-			height: auto;
-			left: 13%;
+			top: 82px;
+			width: 244px;
+			height: 70px;
 		}
 
 		.page5-txt2{
-			position: absolute;
-			top: 32.67%;
-			width: 79%;
-			height: auto;
-			left: 10.5%;
+			top: 162px;
+			width: 254px;
+			height: 16px;
 		}
 	}
 	
 	&.active{
+		.txt{
+			background-image: url('@{img-url}/index/txt_sprite.png');
+		}
+
 		.page1{
-			background: url('@{img-url}/index/p1.jpg') no-repeat bottom center;
-			background-size: cover;
+			background-image: url('@{img-url}/index/L1.jpg');
+		}
+
+		.page2{
+			background-image: url('@{img-url}/index/L2.jpg');
 		}
 
 		.page3{
-			background: url('@{img-url}/index/p3.jpg') no-repeat bottom center;
-			background-size: cover;
+			background-image: url('@{img-url}/index/L3.jpg');
 		}
 
 		.page4{
-			background: url('@{img-url}/index/p4.jpg') no-repeat bottom center;
-			background-size: cover;
+			background-image: url('@{img-url}/index/L4.jpg');
 		}
 
 		.page5{
-			background: url('@{img-url}/index/p5.jpg') no-repeat bottom center;
-			background-size: cover;
+			background-image: url('@{img-url}/index/L5.jpg');
 		}
 
 		.cur{
-			.page1-txt1,.page1-txt2{
-				.translate(-50%, 0);
-				.opacity(1); 
-			}
-
-			.page2-txt1,.page2-txt2, .page2-txt3,
+			.page1-txt1,.page1-txt2,
+			.page2-txt1,.page2-txt2,
 			.page3-txt1,.page3-txt2,
 			.page4-txt1,.page4-txt2,.page4-txt3,
 			.page5-txt1,.page5-txt2{
-				.translate(0, 0);
-				.opacity(1);
+				.translate(-50%, 0);
+				.opacity(1); 
 				visibility: visible;
 			}
 
@@ -320,98 +349,40 @@
 
 //--- 兼容低屏幕
 @media screen and(max-height: 480px) {
+	.screen .page1 .page1-txt1{
+		top: 50px;
+	}
+	.screen .page1 .page1-txt2{
+		top: 140px;
+	}
 	.screen .page2 .page2-txt1{
-		top: 11%;
+		top: 50px;
 	}
 	.screen .page2 .page2-txt2{
-		top: 19%;
-	}
-	.screen .page2 .page2-txt3{
-		top: 28%;
+		top: 136px;
 	}
 
 	.screen .page3 .page3-txt1{
-		top: 11%;
+		top: 50px;
 	}
 	.screen .page3 .page3-txt2{
-		top: 27%;
+		top: 132px;
 	}
 
 	.screen .page4 .page4-txt1{
-		top: 10%;
+		top: 50px;
 	}
 	.screen .page4 .page4-txt2{
-		top: 25.4%;
+		top: 124px;
 	}
 	.screen .page4 .page4-txt3{
-		top: 30%;
+		top: 150px;
 	}
 
 	.screen .page5 .page5-txt1{
-		top: 11%;
+		top: 54px;
 	}
 	.screen .page5 .page5-txt2{
-		top: 28%;
-	}
-}
-
-@media screen and(max-height: 450px) {
-	.screen .page1-txt1,.screen .page1-txt2{
-		width: 50%;
-	}
-	.screen .page1-txt2{
-		top: 25.5%;
-	}
-	.screen .page2 .page2-txt1{
-		top: 11%;
-		width: 39%;
-		left: 20%;
-	}
-	.screen .page2 .page2-txt2{
-		top: 17.5%;
-		width: 39%;
-	}
-	.screen .page2 .page2-txt3{
-		top: 25%;
-		width: 54.7%;
-		left: 22.65%;
-	}
-
-	.screen .page3 .page3-txt1{
-		width: 51%;
-		top: 11%;
-		left: 24.5%;
-	}
-	.screen .page3 .page3-txt2{
-		top: 25%;
-		width: 69.3%;
-		left: 15.35%;
-	}
-
-	.screen .page4 .page4-txt1{
-		top: 11%;
-		width: 60.16%;
-		left: 19.92%;
-	}
-	.screen .page4 .page4-txt2{
-		top: 24%;
-		width: 61.7%;
-		left: 19.15%;
-	}
-	.screen .page4 .page4-txt3{
-		top: 28%;
-		width: 72.4%;
-		left: 13.8%;
-	}
-
-	.screen .page5 .page5-txt1{
-		top: 12%;
-		width: 59.2%;
-		left: 21.29%;
-	}
-	.screen .page5 .page5-txt2{
-		top: 25%;
-		width: 61.7%;
-		left: 19.15%;
+		top: 132px;
 	}
 }

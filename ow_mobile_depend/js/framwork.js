@@ -13,8 +13,9 @@ define('framwork', function(require) {
         var that = $(this);
         $(this).on('click', function(){
             var active = $(this).attr('data-toggle');
+            var hasClass = $(this).hasClass(active);
             that.removeClass(active);
-            $(this).toggleClass(active);
+            $(this)[hasClass ? 'removeClass' : 'addClass'](active);
         })
     };
 	
@@ -42,16 +43,19 @@ define('framwork', function(require) {
         $('.page-banner').addClass('active');
 
         /*-- 菜单 --*/
-        var menuToggle = (function(){
-            var menu = $('.navigator'), btn = $('.header-menu');
+        // $('.navigator').css({ 'height': winH+'px'});
+        var menu = $('.navigator'), btn = $('.header-menu');
+        menu.css({'height': winH+'px'});
+        $('body').css({'height': winH+'px'});
+        var menuToggle = (function(){            
             return {
                 show: function(){
-                    $('html').addClass('menu-open');
+                    $('body').addClass('menu-open');
                     menu.addClass('active');
                     btn.addClass('active');
                 },
                 hide: function(){
-                    $('html').removeClass('menu-open');
+                    $('body').removeClass('menu-open');
                     menu.removeClass('active');
                     btn.removeClass('active');
                 }
@@ -64,7 +68,8 @@ define('framwork', function(require) {
             e.preventDefault();
             return false;
         });
-        //$(document).on('click', $.proxy(menuToggle.hide, menuToggle));
+        //$(document).on('click', $.proxy(menuToggle.hide, menuToggle));\
+        menu.on('click', $.proxy(menuToggle.hide, menuToggle))
 
         $(document).on('swipeLeft', function(){
             menuToggle.show();

@@ -14,8 +14,13 @@ define('app/index', function(require) {
     var Config = typeof webConfig == 'undefined' ? {"imgUrl": "ow_mobile_depend/images/index/"} : webConfig;
 
     $(document).ready(function(){
+        var winH = window.innerHeight;
+        
+
         // loading
         $('.loading').hide();
+
+
         var dialog = layer.open({
             type: 2,
             //shade: false,
@@ -23,17 +28,12 @@ define('app/index', function(require) {
             content: '<div id="loading-txt">页面加载中…</div>',
         });
 
-        var oImgs = $('img[data-src]'), imgs, bgImgs, loaded = 0;
+        var imgs, loaded = 0;
 
         // 收集需要延迟的图片
-        imgs = oImgs.map(function(index, elem) {
-            return $(this).attr('data-src');
-        });
-        bgImgs = ['p1.jpg', 'p3.jpg', 'p4.jpg', 'p5.jpg'].map(function(img){
+        imgs = ['txt_sprite.png','L1.jpg', 'L2.jpg', 'L3.jpg', 'L4.jpg', 'L5.jpg'].map(function(img){
             return Config.imgUrl + img;
-        })
-
-        imgs = imgs.concat(bgImgs);
+        });
 
         // 加载完毕响应函数
         var imgReady = function(){
@@ -43,9 +43,9 @@ define('app/index', function(require) {
 
             // 加载图片完毕
             $('.screen').addClass('active');
-            oImgs.attr('src', function(){
-                return $(this).attr('data-src');
-            })
+            // oImgs.attr('src', function(){
+            //     return $(this).attr('data-src');
+            // })
 
             // 全屏轮播
             var objPages = objScreen.find('.page');
