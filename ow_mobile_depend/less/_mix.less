@@ -84,16 +84,19 @@
 // Rotate
 .rotate( @deg ) {
   .transform( rotate(@deg) );
+  // .transform( rotate3d(@deg, 0, 0) );
 }
 
 // Scale
 .scale( @ratio ) {
   .transform( scale(@ratio) );
+  // .transform( scale3d(@ratio, @ratio, 0) );
 }
 
 // Translate
 .translate( @x, @y ) {
-  .transform( translate(@x, @y) );
+  .transform( translate(@x, @y));
+  // .transform( translate3d(@x, @y, 0) );
 }
 
 // origin

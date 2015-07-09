@@ -83,7 +83,9 @@
     <body {% block bodyClass %}{% endblock %}>
         
         {% include "_layout/header.html" %}
+        <div class="wrapper">
         {% block body %}{% endblock %}
+        </div>
         
         {% include "_layout/footer.html" %}
 

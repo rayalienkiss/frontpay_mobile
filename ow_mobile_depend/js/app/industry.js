@@ -14,6 +14,7 @@ define('app/industry', function(require) {
     var Config = typeof webConfig == 'undefined' ? {"imgUrl": "ow_mobile_depend/images/solution/"} : webConfig;
 
     $(document).ready(function(){
+       var $wrapper = $('.wrapper');
        var $banner = $('.solution-top');
        var bannerH = $banner.height();
        var viewW = window.innerWidth;
@@ -51,7 +52,7 @@ define('app/industry', function(require) {
         $banner.on('touchstart', function(e){
             if(!drag) return;
             startY = e.targetTouches[0].pageY;
-            e.stopPropagation();
+            //e.stopPropagation();
         }).on('touchend', function(e){
             if(moveY < 0) {
                 var st = $(window).scrollTop();

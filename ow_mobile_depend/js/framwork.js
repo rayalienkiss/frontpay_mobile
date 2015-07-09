@@ -32,6 +32,7 @@ define('framwork', function(require) {
 
     	/*-- 滚定页脚 --*/
         var winH = $(window).height(),
+            hH = $('.header').height(),
             docH = $(document.body).height(),
             footerH = $('.footer').height();
 
@@ -46,18 +47,30 @@ define('framwork', function(require) {
         // $('.navigator').css({ 'height': winH+'px'});
         var menu = $('.navigator'), btn = $('.header-menu');
         menu.css({'height': winH+'px'});
-        $('body').css({'height': winH+'px'});
+
+        //$('body').css({'height': winH+'px'});
         var menuToggle = (function(){            
             return {
+                open: false,
+                st : 0,
                 show: function(){
-                    $('body').addClass('menu-open');
+                    this.st = $(window).scrollTop();
+                    this.open = true;
+                    $(window).scrollTop(0);
+                    //alert($(document).height())
+                    $('body').css({'height': winH  +'px'}).addClass('menu-open');
+                    $('.wrapper').css({'height': winH - hH - footerH +'px', 'overflow': 'hidden'});
                     menu.addClass('active');
                     btn.addClass('active');
+                    //alert($('body').height())
                 },
                 hide: function(){
-                    $('body').removeClass('menu-open');
+                    this.open = false;
+                    $('body').css({'height': 'auto'}).removeClass('menu-open');
+                    $('.wrapper').css({'height': 'auto', 'overflow': 'auto'});
                     menu.removeClass('active');
                     btn.removeClass('active');
+                    $(window).scrollTop(this.st);
                 }
             }
         })();
@@ -74,7 +87,11 @@ define('framwork', function(require) {
         $(document).on('swipeLeft', function(){
             menuToggle.show();
         }).on('swipeRight', function(){
-            menuToggle.hide();
+            if(menuToggle.open){ // 菜单打开，向右侧滑默认关闭菜单
+                menuToggle.hide();
+            } else { // 手势返回
+                history.go(-1);
+            }            
         });
     });
 })

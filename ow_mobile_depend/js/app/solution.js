@@ -18,15 +18,16 @@ define('app/solution', function(require) {
             scrollTop = 0;
 
         /* 锁定导航 */
-        $(window).on('scroll.hidebanner', function(){
-            // 导航
-            var st = $(this).scrollTop();
+        var fixedNav = function(){
+            var st = $(window).scrollTop();
             if(st >= pos.top) {
                 $solution.addClass('fixed');
             } else {
                 $solution.removeClass('fixed');
             }
-        });
+        };
+        $(window).on('scroll.hidebanner', fixedNav);
+        setInterval(fixedNav, 50);
 
         // ---- 滚动组合
         var oNav = $('.j-navigators a');
