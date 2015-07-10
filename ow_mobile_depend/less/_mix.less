@@ -374,6 +374,12 @@
 }
 
 // 单独属性定义
+.animation-name( @name ) {
+    animation-name: @name;
+    -moz-animation-name: @name;
+    -webkit-animation-name: @name;
+    -o-animation-name: @name;
+}
 .animation-delay( @delay ) {
     animation-delay: @delay;
     -moz-animation-delay: @delay;

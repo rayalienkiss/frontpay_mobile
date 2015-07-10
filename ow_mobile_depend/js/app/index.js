@@ -25,7 +25,7 @@ define('app/index', function(require) {
             type: 2,
             //shade: false,
             time: 9999999999,
-            content: '<div id="loading-txt">页面加载中…</div>',
+            content: '<div id="loading-txt">0%</div>',
         });
 
         var imgs, loaded = 0;
@@ -59,16 +59,16 @@ define('app/index', function(require) {
                 page: '.page',
                 afterChange: function(data) {
                     if(pageLen == data.cur + 1) { // 最后一页
-                        $('.start').addClass('end');
                         // 最后一页，向下展现页脚
                         objPages.eq(data.cur).one('swipeUp', function(){
+                             $('.start-right').show();
                              $('footer').addClass('active');
                         }).one('swipeDown', function(e) {
                             $('footer').removeClass('active');
                             e.stopPropagation();
                         });
                     } else{
-                        $('.start').removeClass('end');
+                        $('.start-right').hide();
                     }
                 }
             });

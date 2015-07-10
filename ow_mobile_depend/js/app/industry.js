@@ -98,7 +98,7 @@ define('app/industry', function(require) {
                 type: 2,
                 //shade: false,
                 time: 9999999999,
-                content: '<div id="loading-txt">页面加载中…</div>',
+                content: '<div id="loading-txt">0%</div>',
             }),
             oImgs = $('img[data-src]'), 
             imgs, 
@@ -109,7 +109,7 @@ define('app/industry', function(require) {
             imgs = oImgs.map(function(index, elem) {
                 return $(this).attr('data-src');
             });
-            bgImgs = ['banner1.jpg', 'banner2.jpg', 'banner3.jpg', 'banner4.jpg', 'banner5.jpg', 'banner6.jpg', 'banner7.jpg'].map(function(img){
+            bgImgs = ['banner1.jpg', 'banner2.jpg', 'banner3.jpg', 'banner4.jpg', 'banner5.jpg', 'banner6.jpg', 'banner7.jpg', 'logo-Commerce_sprite2.png'].map(function(img){
                 return Config.imgUrl + img;
             });
 

@@ -388,7 +388,7 @@ a:focus{ outline: none; }
 // .loopNav(5, .2s);
 
 .footer{
-	padding: 2rem 0;
+	padding: 1rem 0;
 	background: @primary-color;
 	text-align: center;
 	line-height: 1.8rem;
@@ -421,6 +421,8 @@ a:focus{ outline: none; }
 	}
 
 	a{
+		display: inline-block;
+		padding: 1rem 0;
 		color: @footer-nav-color;
 		text-decoration: none;
 	}
@@ -824,6 +826,7 @@ a:focus{ outline: none; }
 	.reset-list(left, inline, 1rem, 1rem);
 	margin-left: -5%;
 	padding-top: 1em;
+	min-height: 158px;
 	.clearfix();
 	> li{
 		.border-box();
@@ -978,12 +981,16 @@ a:focus{ outline: none; }
 .map-list{
 	.clearfix();
 	.reset-list(left, inline, 1em, 1.8);
-	margin-right: -4rem;
+	// margin-right: -4rem;
 	margin-bottom: 2rem;
 	padding-bottom: 1rem;
 
 	> li{
-		margin-right: 1.5rem;
+		width: 48%;
+		// padding-right: 1.5rem;
+		&:first-child{
+			margin-right: 4%;
+		}
 	}
 
 	.map-box{
@@ -992,6 +999,7 @@ a:focus{ outline: none; }
 
 		img{
 			vertical-align: top;
+			max-width: 100%;
 		}
 	}
 }
@@ -1306,10 +1314,17 @@ a:focus{ outline: none; }
 		margin-right: 1rem;
 	}
 
+	.logo-big{
+		width: 99px;
+		height: 120px;
+		background: url('@{img-url}/solution/logo-Commerce_sprite2.png') no-repeat;
+		background-size: 99px auto;
+	}
+
 	.solution-mask-txt{
 		position: absolute;
 		top: 50%;
-		left: 38%;
+		left: 120px;
 		color: @white;
 		.translate(0, -50%);
 
@@ -1328,28 +1343,57 @@ a:focus{ outline: none; }
 		}
 	}
 
+	&.mask-green{
+		.logo-big{
+			background-position: 0 -240px;
+		}
+	}
+
 	&.mask-light-blue{
 		border-color: @light-blue;
+		.logo-big{
+			background-position: 0 -480px;
+		}
 	}
 
 	&.mask-copper{
 		border-color: @copper;
+
+		.logo-big{
+			background-position: 0 0;
+		}
 	}
 
 	&.mark-light-purple{
 		border-color: @light-purple;
+
+		.logo-big{
+			background-position: 0 -720px;
+		}
 	}
 
 	&.mask-dark-salmon{
 		border-color: @dark-salmon;
+
+		.logo-big{
+			background-position: 0 -120px;
+		}
 	}
 
 	&.mask-rosy-brown{
 		border-color: @rosy-brown;
+
+		.logo-big{
+			background-position: 0 -360px;
+		}
 	}
 
 	&.mask-light-steel-blue{
 		border-color: @light-steel-blue;
+
+		.logo-big{
+			background-position: 0 -600px;
+		}
 	}
 }
 

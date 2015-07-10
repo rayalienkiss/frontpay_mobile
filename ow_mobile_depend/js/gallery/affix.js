@@ -15,6 +15,9 @@ define('gallery/affix', function(require){
 			after: function(){}
 		};
 
+		var winH = window.innerHeight,
+			docH = $(document).height();
+
 		var config = $.extend(d, options || {}),
 			handler = {
 				getAttr: function(obj){
@@ -54,6 +57,14 @@ define('gallery/affix', function(require){
 		if(collections.length > 0) {
 			$(window).on('scroll.scrollspy', function(){
 				var st = $(this).scrollTop();
+				if(st + winH >= docH){
+					handler.show(collections[collections.length-1].obj);
+					return;
+				}
+				if(st <= 0) {
+					handler.show(collections[0].obj);
+					return;
+				}
 				collections.forEach(function(model, index){
 					var attr = handler.getAttr(model.obj);
 					if(model.top <= st + attr.top && inViewport(model.obj[0])) {
