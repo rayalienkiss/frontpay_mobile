@@ -38,6 +38,10 @@ var del = require('del')
 var autoBrowser = require('./autoBrowser')
 var getIPAddress = require('./getIPAddress')
 //var Server = require('./server')
+//
+//
+
+var svnConfig = require('./svnConfig')
 
 //模板路径
 var tplPath = '../';
@@ -220,6 +224,14 @@ gulp.task('watch', function(){
    // gulp.watch(filePaths.sprite, ['sprite']);
 	//gulp.watch(distPath+'/images/sprite/**/**', ['less']);
 });
+
+/*---- 发布到SVN -----*/
+gulp.task('publish', function(){
+    gulp.src([outPath+'/**/**', '!'+outPath+'/ow_mobile_depend/maps/**/**'])
+        // 根据你的目录请修改路径
+        .pipe(gulp.dest(svnConfig.path));
+});
+
 
 /*------ 默认启动任务 ------ */
 gulp.task('default', ['clean'], function(){
