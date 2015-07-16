@@ -20,3 +20,9 @@ for mobile
 
 * 采用`cmd`规范的`seajs`框架
 * `DOM`选择了`zeptojs`框架
+
+## 发布到SVN
+
+从`github`拉取最新的源码，在`build`目录下修改`svnCongfig`的路径，修改为`svn`项目路径
+
+在`build`的命令里使用`gulp publish` 执行发布任务,将自动复制`output`目录文件到`svn`项目路径
