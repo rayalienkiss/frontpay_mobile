@@ -16,7 +16,7 @@ define('gallery/affix', function(require){
 		};
 
 		var winH = window.innerHeight,
-			docH = $(document).height();
+			docH = document.body.scrollHeight || document.documentElement.scrollHeight;
 
 		var config = $.extend(d, options || {}),
 			handler = {
@@ -57,7 +57,7 @@ define('gallery/affix', function(require){
 		if(collections.length > 0) {
 			$(window).on('scroll.scrollspy', function(){
 				var st = $(this).scrollTop();
-				if(st + winH >= docH){
+				if(st + winH + config.top >= docH){
 					handler.show(collections[collections.length-1].obj);
 					return;
 				}

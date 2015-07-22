@@ -13,7 +13,7 @@ define('app/solution', function(require) {
             pos = $solution.position(),
             winH = $(window).height(),
             hH = $('.header').height(),
-            docH = $(document).height(),
+            docH = document.body.scrollHeight || document.documentElement.scrollHeight,
             navH = $nav.height(),
             scrollTop = 0,
             jump = false
@@ -34,16 +34,21 @@ define('app/solution', function(require) {
         // ---- 滚动组合
         var oNav = $('.j-navigators a');
         $('.j-affix').affix({
-            top:  winH * 0.4,
+            top:  navH + hH,
             after: function(obj){
-                var id;
-                if(jump && triggerIndex >=0){
-                  id = triggerIndex;
-                }  else {
-                    id = obj[0].id;
-                }
-                //var id = obj[0].id;
-                oNav.removeClass('active').filter('[href="#'+ id +'"]').addClass('active');
+                if(jump) return;
+                // var id;
+                // if(jump && triggerIndex >=0){
+                //   id = triggerIndex;
+                // }  else {
+                //     id = obj[0].id;
+                // }
+               var id = obj[0].id, st = $(window).scrollTop();
+                // if(st + winH >= docH) {
+                //      id = oNav.eq(oNav.length - 1)[0].hash.replace(/#/g, '');
+                // }
+               // console.log(id);
+               id && oNav.removeClass('active').filter('[href="#'+ id +'"]').addClass('active');
             }
         });
     
@@ -55,19 +60,23 @@ define('app/solution', function(require) {
         };
 
         /* 动画 */
-        var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function(callback){ window.setTimeout(callback, 1000 / 60)};
         function scrollAnim(h, dir, next) {
             var st = $(window).scrollTop(), speed = dir > 0 ? 50 : -50;
             if(h === st) return;
             st += speed;
 
 
-            if(scrollTop === st || (dir > 0 && st >= h) || (dir < 0 && st <= h) || docH - winH <= st) {
+            //if(scrollTop === st || (dir > 0 && st >= h) || (dir < 0 && st <= h) || docH - winH <= st) {
+            // console.log(st + winH, docH);
+            if(st == h || (dir > 0 && st >= h) || (dir < 0 && st <= h) || st + winH >= docH){
                 $(window).scrollTop(h);
+                
 
                 next && typeof next ==="function" && next();
             } else {
-                $(window).scrollTop(st);
+                //$(window).scrollTop(st);
+                window.scrollBy(0, speed);
                 requestAnimationFrame(function(){
                     scrollAnim(h, dir, next);
                 });
@@ -80,12 +89,13 @@ define('app/solution', function(require) {
         /* 导航点击跳转 */
         oNav.on('click', function(e){
             var obj = $(getHash(e.currentTarget.href));
-            if(obj) {
+            // alert(jump)
+            if(obj && !jump) {
                 triggerIndex = $(this).index();
                 jump = true;
                 oNav.removeClass('active');
                 $(this).addClass('active');
-                var pos = obj.position();
+                var pos = obj.offset();
                 var st = $(window).scrollTop();
                 var dH = $(document).height();
                 var distance =  pos.top - hH - navH;

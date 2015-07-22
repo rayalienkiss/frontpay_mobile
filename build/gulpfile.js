@@ -62,7 +62,7 @@ var filePaths = {
 	less: [staticPath+'/less/**/**.less', '!'+staticPath+'/less/**/_**.less'],
 	js: staticPath+'/js/**/**.js',
     plguinStyle: staticPath+'/js/**/**.css',
-	html: [tplPath+'/**/*.html','!'+tplPath+'/_**/*.html','!'+tplPath+'/output/**/*.html','!'+tplPath+'/build/**/*.html'],
+	html: [tplPath+'/**/*.html','!'+tplPath+'/card.html','!'+tplPath+'/_**/*.html','!'+tplPath+'/output/**/*.html','!'+tplPath+'/build/**/*.html'],
     watchHtml: [tplPath+'/**/*.html', '!'+tplPath+'/output/**/*.html','!'+tplPath+'/build/**/*.html']
 };
 
@@ -140,7 +140,7 @@ gulp.task('images', function(){
                     use: [pngquant()]
                 }))
                 .pipe(gulp.dest(distPath+'/images'))
-                .pipe(connect.reload())
+                // .pipe(connect.reload())
 })
 
 /* less文件编译 */
@@ -162,7 +162,7 @@ gulp.task('less', function(){
 /* js */
 gulp.task('js', function(){
     return gulp.src(filePaths.js)
-                .pipe(sourcemaps.init())
+               .pipe(sourcemaps.init())
                 .pipe(uglify({mangle: false}))
                 .pipe(sourcemaps.write('../maps'))
                 .pipe(gulp.dest(distPath+'/js'))
@@ -186,7 +186,7 @@ gulp.task('plugin', function(){
     return gulp.src(filePaths.plguinStyle)
                 .pipe(minifyCSS({compatibility: 'ie7'}))
                 .pipe(gulp.dest(distPath+'/js'))
-                .pipe(connect.reload())
+                // .pipe(connect.reload())
 });
 
 /* 编译模板 */

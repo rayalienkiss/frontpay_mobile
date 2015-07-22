@@ -36,9 +36,9 @@ define('framwork', function(require) {
             docH = $(document.body).height(),
             footerH = $('.footer').height();
 
-        if(winH > docH + footerH) {
-            $('.footer').addClass('footer-fixed')
-        }
+        // if(winH > docH + footerH) {
+        //     $('.footer').addClass('footer-fixed')
+        // }
        
         /*-- banner动画 --*/
         $('.page-banner').addClass('active');
@@ -59,7 +59,7 @@ define('framwork', function(require) {
                     $(window).scrollTop(0);
                     //alert($(document).height())
                     $('body').css({'height': winH  +'px'}).addClass('menu-open');
-                    $('.wrapper').css({'height': winH - hH - footerH +'px', 'overflow': 'hidden'});
+                    // $('.wrapper').css({'height': winH - hH - footerH +'px', 'overflow': 'hidden'});
                     menu.addClass('active');
                     btn.addClass('active');
                     //alert($('body').height())
@@ -67,7 +67,7 @@ define('framwork', function(require) {
                 hide: function(){
                     this.open = false;
                     $('body').css({'height': 'auto'}).removeClass('menu-open');
-                    $('.wrapper').css({'height': 'auto', 'overflow': 'auto'});
+                    // $('.wrapper').css({'height': 'auto', 'overflow': 'auto'});
                     menu.removeClass('active');
                     btn.removeClass('active');
                     $(window).scrollTop(this.st);

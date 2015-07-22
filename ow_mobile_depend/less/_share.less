@@ -20,6 +20,7 @@
 
 html {
     font-size: 62.5%;
+    height: 100%;
 }
 // iphone 6plus
 /*@media only screen and (-Webkit-min-device-pixel-ratio: 3) {
@@ -41,6 +42,8 @@ body {
 
 body{
 	padding-top: @header-h;
+	// padding-bottom: 5.2rem;
+	height: 100%;
 
 	.transition(all, .3s, linear, 0);
 	// -webkit-transform-style: preserve-3d;
@@ -70,6 +73,13 @@ a:focus{ outline: none; }
 .light-blue{ color: @light-blue; }
 
 .reset-padding{ padding: 0!important;}
+
+.wrapper{
+	// height: 100%;
+	min-height: 100%;
+	padding-bottom: 5.2rem;
+	margin-bottom: -5.2rem;
+}
 
 .container{
 	margin: 0 auto;
@@ -388,6 +398,9 @@ a:focus{ outline: none; }
 // .loopNav(5, .2s);
 
 .footer{
+	position: relative;
+	z-index: 2;
+	margin-top: -5.1rem;
 	padding: 1rem 0;
 	background: @primary-color;
 	text-align: center;
@@ -403,6 +416,7 @@ a:focus{ outline: none; }
 		bottom: 0;
 		left: 0;
 		width: 100%;
+		z-index: 10;
 	}
 }
 .ft-menu{
@@ -466,6 +480,10 @@ a:focus{ outline: none; }
 		&:focus{
 			.inner-shadow(0, 0, .5rem, .2);
 		}
+	}
+
+	.form-input.error,.form-textarea.error{
+		border: 1px solid #ee7878;
 	}
 
 	.form-textarea{
@@ -835,9 +853,9 @@ a:focus{ outline: none; }
 		width: 45%;
 		margin: 0 0 1.5rem 5%;
 
-		.transition(all, .6s, ease-in, .5s);
-		opacity: 0;
-		.translate(0, 20%);
+		// .transition(all, .6s, ease-in, .5s);
+		// opacity: 0;
+		// .translate(0, 20%);
 
 		img{
 			display: block;
@@ -847,16 +865,16 @@ a:focus{ outline: none; }
 	}
 }
 
-.loopImgList(12, .15s);
+//.loopImgList(12, .15s);
 
-.domReady{
-	.img-list{
-		> li{
-			opacity: 1;
-			.translate(0,0);
-		}
-	}
-}
+// .domReady{
+// 	.img-list{
+// 		> li{
+// 			opacity: 1;
+// 			.translate(0,0);
+// 		}
+// 	}
+// }
 
 @media screen and(min-width: 640px) {
 	.img-list{
@@ -934,8 +952,9 @@ a:focus{ outline: none; }
 
 // 留言反馈
 .feedBack{
+	padding-top: 1em;
 	.title{
-		margin: 1em 0;
+		margin: 0 0 1em;
 	}
 }
 
@@ -1642,8 +1661,8 @@ a:focus{ outline: none; }
 			background: @body-bg-gray;
 			border-bottom: 1px solid @border-color;
 			//.translate(-50%, 0);
-			-webkit-transform: translate3d(0,0,0);
-			transform: translate3d(0,0,0);
+			// -webkit-transform: translate3d(0,0,0);
+			// transform: translate3d(0,0,0);
 			.clearfix();
 		}
 

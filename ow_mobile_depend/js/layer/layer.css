@@ -35,7 +35,7 @@
 .layermbox2 .layermcont>div{line-height:22px; padding-top:7px; margin-bottom:20px; font-size: 14px;}
 .layermbtn{position:relative; height:40px; line-height:40px; font-size:0; text-align:center;  border-top:1px solid #EBEBEB;}
 .layermbtn span{position:relative; display:inline-block; width:50%; text-align:center; font-size:14px; cursor:pointer; border-radius: 0 5px 0 0;}
-.layermbtn span:first-child{height:39px; /*background-color:#fff;*/ border-radius: 0 0 0 5px;}
+.layermbtn span:first-child{height:39px; background-color:#fff; border-radius: 0 0 0 5px;}
 .layermbtn:before{content:'\20'; position:absolute; width:1px; height:39px; left:50%; top:0; background-color:#EBEBEB;}
 .layermend{position:absolute; right:7px; top:10px; width:30px; height:30px; border: 0; font-weight:400; background: transparent; cursor: pointer; -webkit-appearance: none; font-size:30px;}
 .layermend::before, .layermend::after{position:absolute; left:5px; top:13px; content:''; width:20px; height:2px; background-color:rgba(0,0,0,.3); transform:rotate(45deg); -webkit-transform:rotate(45deg); border-radius: 3px;}
