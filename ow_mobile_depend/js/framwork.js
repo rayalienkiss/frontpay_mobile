@@ -15,6 +15,7 @@ define('framwork', function(require) {
             var active = $(this).attr('data-toggle');
             var hasClass = $(this).hasClass(active);
             that.removeClass(active);
+            $(this)[0].offsetHeight;
             $(this)[hasClass ? 'removeClass' : 'addClass'](active);
         })
     };
@@ -32,9 +33,13 @@ define('framwork', function(require) {
 
     	/*-- 滚定页脚 --*/
         var winH = $(window).height(),
+            winW = window.innerWidth;
             hH = $('.header').height(),
-            docH = $(document.body).height(),
+            docH = document.body.scrollHeight || document.documentEelemnt.scrollHeight,
             footerH = $('.footer').height();
+
+        var UA = window.navigator.userAgent;
+        var fuckPhones = /(vivo Y15T)/gi.test(UA);
 
         // if(winH > docH + footerH) {
         //     $('.footer').addClass('footer-fixed')
@@ -46,7 +51,12 @@ define('framwork', function(require) {
         /*-- 菜单 --*/
         // $('.navigator').css({ 'height': winH+'px'});
         var menu = $('.navigator'), btn = $('.header-menu');
-        menu.css({'height': winH+'px'});
+        menu.css({'height': docH+'px'});
+
+        // if(fuckPhones) {
+        //     menu.css({'width': winW + 74 + 'px'}).addClass('fuckphones');
+        // }
+        //fuckPhones && menu.css({'width': winW + 74 + 'px'}).addClass('fuckphones');
 
         //$('body').css({'height': winH+'px'});
         var menuToggle = (function(){            
@@ -54,23 +64,26 @@ define('framwork', function(require) {
                 open: false,
                 st : 0,
                 show: function(){
-                    this.st = $(window).scrollTop();
+                   // this.st = $(window).scrollTop();
                     this.open = true;
-                    $(window).scrollTop(0);
+                    //$(window).scrollTop(0);
                     //alert($(document).height())
-                    $('body').css({'height': winH  +'px'}).addClass('menu-open');
-                    // $('.wrapper').css({'height': winH - hH - footerH +'px', 'overflow': 'hidden'});
+                    $('body').addClass('menu-open');
+                    // $('body').css({'height': winH  +'px'}).addClass('menu-open');
+                    //$('.wrapper').css({'height': winH - hH +'px', 'overflow': 'hidden'});
                     menu.addClass('active');
                     btn.addClass('active');
                     //alert($('body').height())
                 },
                 hide: function(){
                     this.open = false;
-                    $('body').css({'height': 'auto'}).removeClass('menu-open');
+                   // $('body')[0].offsetHeight;
+                    $('body').removeClass('menu-open');
+                    //$('.wrapper').css({'height': 'auto'});
                     // $('.wrapper').css({'height': 'auto', 'overflow': 'auto'});
                     menu.removeClass('active');
                     btn.removeClass('active');
-                    $(window).scrollTop(this.st);
+                    //$(window).scrollTop(this.st);
                 }
             }
         })();

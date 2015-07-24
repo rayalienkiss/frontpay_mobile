@@ -21,6 +21,7 @@ define('gallery/affix', function(require){
 		var config = $.extend(d, options || {}),
 			handler = {
 				getAttr: function(obj){
+					if(!obj) return;
 					return {
 						active: obj.attr('data-active') || config.active,
 						top: obj.attr('data-offset-top') || config.top
@@ -54,24 +55,45 @@ define('gallery/affix', function(require){
 			}
 		});
 
-		if(collections.length > 0) {
+		var i, len = collections.length;
+		if(len > 0) {
 			$(window).on('scroll.scrollspy', function(){
 				var st = $(this).scrollTop();
 				if(st + winH + config.top >= docH){
-					handler.show(collections[collections.length-1].obj);
+					handler.show(collections[len-1].obj);
 					return;
 				}
-				if(st <= 0) {
+				if(st <= 0 || st < config.top) {
 					handler.show(collections[0].obj);
 					return;
 				}
-				collections.forEach(function(model, index){
+				//collections.forEach(function(model, index){
+				for(i = len; i--;) {
+					// if(collections[i + 1] == undefined) {
+					// 	handler.show(collections[len - 1].obj);
+					// }
+					var model = collections[i];
 					var attr = handler.getAttr(model.obj);
-					if(model.top <= st + attr.top && inViewport(model.obj[0])) {
+					var nextModel = collections[i + 1] ? collections[i + 1] : undefined;
+					// if(model.top <= st + attr.top && inViewport(model.obj[0])) {
+					// 	handler.show(model.obj);
+					// 	return;
+					// }
+					//console.log(nextModel);
+
+					if(st + attr.top >= model.top && (nextModel === undefined || st + attr.top < nextModel.top )) {
+					// console.log(nextModel === undefined);
+					// console.log(st, nextModel.top);
+					console.log('-------');
+					console.log(i, attr.top);
+					console.log(st);
+					console.log(model);
+					console.log(nextModel)
+					console.log('/-------')
 						handler.show(model.obj);
-						return;
 					}
-				})
+				}
+				//})
 			});
 		}
 		

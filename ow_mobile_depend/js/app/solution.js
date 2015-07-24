@@ -34,9 +34,12 @@ define('app/solution', function(require) {
         // ---- 滚动组合
         var oNav = $('.j-navigators a');
         $('.j-affix').affix({
-            top:  navH + hH,
+            top:  navH + hH + 20,
             after: function(obj){
-                if(jump) return;
+                if(jump){
+                    jump = false;
+                    return;
+                }
                 // var id;
                 // if(jump && triggerIndex >=0){
                 //   id = triggerIndex;
@@ -90,7 +93,7 @@ define('app/solution', function(require) {
         oNav.on('click', function(e){
             var obj = $(getHash(e.currentTarget.href));
             // alert(jump)
-            if(obj && !jump) {
+            if(obj) {
                 triggerIndex = $(this).index();
                 jump = true;
                 oNav.removeClass('active');
@@ -98,11 +101,12 @@ define('app/solution', function(require) {
                 var pos = obj.offset();
                 var st = $(window).scrollTop();
                 var dH = $(document).height();
-                var distance =  pos.top - hH - navH;
-                //$(window).scrollTop(distance);
-                scrollAnim(distance, distance - st, function(){
-                    jump = false;
-                });
+                var distance =  pos.top - hH - navH - 10;
+                // alert(distance);
+                $(window).scrollTop(distance);
+                // scrollAnim(distance, distance - st, function(){
+                   // jump = false;
+                // });
             }
             
             e.preventDefault();
